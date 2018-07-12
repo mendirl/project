@@ -1,0 +1,17 @@
+spring:
+    cloud:
+        consul:
+            enabled: false
+
+---
+
+spring.profiles: consul
+spring:
+    cloud:
+        consul:
+            enabled: true
+            config:
+                enabled: false
+            discovery:
+                instanceId: ${spring.application.name}:${random.value}
+                health-check-path: ${server.servlet.context-path}/actuator/health
