@@ -1,0 +1,12 @@
+server:
+  port: 8383
+  servlet:
+    context-path: /kproducer
+
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: ALWAYS
+
+spring:
+  application:
+    name: kproducer

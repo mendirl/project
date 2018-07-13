@@ -1,0 +1,12 @@
+server:
+  port: 8282
+  servlet:
+    context-path: /kconsumer
+
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: ALWAYS
+
+spring:
+  application:
+    name: kconsumer

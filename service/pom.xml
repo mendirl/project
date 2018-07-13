@@ -19,6 +19,8 @@
     <modules>
         <module>common</module>
         <module>console</module>
+      <module>kconsumer</module>
+      <module>kproducer</module>
     </modules>
 
     <properties>
