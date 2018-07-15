@@ -42,6 +42,7 @@ public class CubeSecurityConfiguration {
 
     private static final String ROLE_CS_ROOT = IContentService.ROLE_ROOT;
 
+    public static final String PIVOT_USER = "pivot";
     private static final String[] PIVOT_USER_ROLES = {ROLE_TECH, ROLE_CS_ROOT};
 
     public static final String AP_COOKIE_NAME = "AP_JSESSIONID";
@@ -63,13 +64,6 @@ public class CubeSecurityConfiguration {
             .authenticationProvider(jwtConfig.jwtAuthenticationProvider());
     }
 
-    /**
-     * Returns the default {@link AuthenticationEntryPoint} to use
-     * for the fallback basic HTTP authentication.
-     *
-     * @return The default {@link AuthenticationEntryPoint} for the
-     * fallback HTTP basic authentication.
-     */
     @Bean(name = BASIC_AUTH_BEAN_NAME)
     public AuthenticationEntryPoint basicAuthenticationEntryPoint() {
         return new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED);

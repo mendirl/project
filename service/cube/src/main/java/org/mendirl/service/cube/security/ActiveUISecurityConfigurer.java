@@ -1,7 +1,7 @@
 package org.mendirl.service.cube.security;
 
 import org.mendirl.service.cube.CubeSecurityConfiguration.AWebSecurityConfigurer;
-import org.mendirl.service.cube.activeviam.ActiveUIResourceServerConfig;
+import org.mendirl.service.cube.configuration.ActiveUIResourceServerConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;

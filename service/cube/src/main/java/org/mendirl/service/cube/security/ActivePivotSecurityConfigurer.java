@@ -5,6 +5,7 @@ import org.mendirl.service.cube.CubeSecurityConfiguration.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
@@ -20,6 +21,7 @@ import static com.qfs.server.cfg.impl.CxfServletConfig.CXF_WEB_SERVICES;
 import static org.mendirl.service.cube.CubeSecurityConfiguration.*;
 
 @Configuration
+@Order(5)
 public class ActivePivotSecurityConfigurer extends AWebSecurityConfigurer {
 
     private IActivePivotConfig activePivotConfig;

@@ -1,12 +1,9 @@
 package org.mendirl.service.cube.security;
 
 import com.qfs.security.cfg.ICorsFilterConfig;
-import com.qfs.server.cfg.impl.JwtConfig;
 import com.qfs.server.cfg.impl.JwtRestServiceConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,8 +29,6 @@ import static org.mendirl.service.cube.CubeSecurityConfiguration.ROLE_USER;
  */
 @Configuration
 @Order(2) // Must be done before ContentServerSecurityConfigurer (because they match common URLs)
-@Import(value = {JwtRestServiceConfig.class, JwtConfig.class})
-@PropertySource(value = {"classpath:jwt.properties"})
 public class JwtSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     private ApplicationContext context;

@@ -13,10 +13,7 @@ import com.quartetfs.fwk.contributions.impl.ClasspathContributionProvider;
 import com.quartetfs.fwk.monitoring.jmx.impl.JMXEnabler;
 import com.quartetfs.fwk.security.IUserDetailsService;
 import com.quartetfs.fwk.types.impl.ExtendedPluginInjector;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 
 import static com.quartetfs.fwk.types.impl.ExtendedPluginInjector.inject;
 
@@ -30,8 +27,11 @@ import static com.quartetfs.fwk.types.impl.ExtendedPluginInjector.inject;
     ActiveViamRestServicesConfig.class,
     ActivePivotWebSocketServicesConfig.class,
     VersionServicesConfig.class,
-    LocalI18nConfig.class
+    LocalI18nConfig.class,
+    JwtRestServiceConfig.class,
+    JwtConfig.class
 })
+@PropertySource(value = {"classpath:jwt.properties"})
 public class CubeConfiguration {
 
     static {
