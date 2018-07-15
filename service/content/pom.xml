@@ -12,5 +12,76 @@
 
   <artifactId>service-content</artifactId>
 
+  <properties>
+    <main-class>org.mendirl.service.content.ContentApplication</main-class>
+    <docker-repository>content</docker-repository>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.mendirl</groupId>
+      <artifactId>service-license</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mendirl</groupId>
+      <artifactId>service-common</artifactId>
+    </dependency>
+    <!-- spring -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-hateoas</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>jsr311-api</artifactId>
+          <groupId>javax.ws.rs</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-consul-config</artifactId>
+    </dependency>
+    <!-- content server -->
+    <dependency>
+      <groupId>com.activeviam.tech</groupId>
+      <artifactId>content-server-spring</artifactId>
+    </dependency>
+    <!-- test -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
