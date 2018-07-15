@@ -1,0 +1,13 @@
+server:
+  port: 8787
+  #  servlet:
+  #    context-path: /content
+  #    path: "/"
+
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: ALWAYS
+
+spring:
+  application:
+    name: content
