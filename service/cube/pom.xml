@@ -18,10 +18,15 @@
   </properties>
 
   <dependencies>
-    <!--<dependency>-->
-    <!--<groupId>org.mendirl</groupId>-->
-    <!--<artifactId>service-common</artifactId>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>org.mendirl</groupId>
+      <artifactId>service-license</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mendirl</groupId>
+      <artifactId>service-common</artifactId>
+    </dependency>
+    <!-- spring -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
