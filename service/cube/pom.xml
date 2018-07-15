@@ -57,12 +57,12 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-consul-config</artifactId>
     </dependency>
-    <!-- ActivePivot dependencies -->
+    <!-- activepivot -->
     <dependency>
       <groupId>com.activeviam.activepivot</groupId>
       <artifactId>activepivot-server-spring</artifactId>
     </dependency>
-    <!-- ActiveUI SDK dependencies -->
+    <!-- activeui sdk -->
     <dependency>
       <groupId>com.activeviam.activeui</groupId>
       <artifactId>activeui-sdk</artifactId>
@@ -75,22 +75,7 @@
       <groupId>org.webjars.npm</groupId>
       <artifactId>react-dom</artifactId>
     </dependency>
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.xml.ws</groupId>
-      <artifactId>jaxws-api</artifactId>
-    </dependency>
+    <!-- test -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
