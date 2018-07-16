@@ -7,18 +7,17 @@ import com.qfs.security.impl.AAuthenticator;
 import com.qfs.security.impl.JwtAuthenticator;
 import com.qfs.server.cfg.IJwtConfig;
 import com.qfs.server.cfg.content.IActivePivotContentServiceConfig;
+import com.qfs.server.cfg.i18n.impl.ContentServiceI18nConfig;
 import com.qfs.server.cfg.impl.CxfServletConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import static org.mendirl.service.cube.CubeSecurityConfiguration.PIVOT_USER;
 
 @Configuration
+@Import(value = {ContentServiceI18nConfig.class})
 @Profile({"remote-content"})
 public class RemoteActivePivotContentServiceConfiguration implements IActivePivotContentServiceConfig {
 
