@@ -11,5 +11,9 @@ management:
 spring:
   application:
     name: cube
+  datasource:
+    url: jdbc:h2:file:./embedded_content_service;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+
 
 contentServer.remote.api.uri: http://localhost:8787/content
