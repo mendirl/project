@@ -1,5 +1,6 @@
 package org.mendirl.service.cube.configuration;
 
+import com.qfs.content.cfg.impl.ContentServerResourceServerConfig;
 import com.qfs.content.service.IContentService;
 import com.qfs.content.service.audit.impl.AuditableHibernateContentService;
 import com.qfs.pivot.content.IActivePivotContentService;
@@ -10,6 +11,7 @@ import org.hibernate.dialect.H2Dialect;
 import org.hibernate.tool.schema.Action;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
@@ -18,6 +20,9 @@ import java.util.Properties;
 import static org.mendirl.service.cube.CubeSecurityConfiguration.ROLE_USER;
 
 @Configuration
+@Import(value = {
+    ContentServerResourceServerConfig.class
+})
 @Profile({"embedded-content"})
 public class EmbeddedActivePivotContentServiceConfiguration implements IActivePivotContentServiceConfig {
 
