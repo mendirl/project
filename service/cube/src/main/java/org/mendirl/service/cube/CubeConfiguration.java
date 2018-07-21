@@ -35,7 +35,7 @@ import static com.quartetfs.fwk.types.impl.ExtendedPluginInjector.inject;
 public class CubeConfiguration {
 
     static {
-        Registry.setContributionProvider(new ClasspathContributionProvider());
+        Registry.setContributionProvider(new ClasspathContributionProvider("com.activeviam", "com.quartetfs", "com.qfs", "org.mendirl.service.cube"));
     }
 
     /**
