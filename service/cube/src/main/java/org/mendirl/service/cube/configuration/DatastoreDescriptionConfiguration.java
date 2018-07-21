@@ -36,7 +36,7 @@ public class DatastoreDescriptionConfiguration implements IDatastoreDescriptionC
     /**
      * Name of the trade store
      */
-    private static final String TRADE_STORE_NAME = "Trade";
+    public static final String TRADE_STORE_NAME = "Trade";
 
     /**
      * Name of the risk store
@@ -46,7 +46,7 @@ public class DatastoreDescriptionConfiguration implements IDatastoreDescriptionC
     /**
      * Name of the forex store
      */
-    private static final String FOREX_STORE_NAME = "Forex";
+    public static final String FOREX_STORE_NAME = "Forex";
 
     /**
      * Name of the counterparty store
@@ -86,31 +86,31 @@ public class DatastoreDescriptionConfiguration implements IDatastoreDescriptionC
     // Product store fields
 
     private static final String PRODUCT__ID = "Id";
-    private static final String PRODUCT__NAME = "ProductName";
-    private static final String PRODUCT__TYPE = "ProductType";
-    private static final String PRODUCT__UNDERLIER_CODE = "UnderlierCode";
-    private static final String PRODUCT__UNDERLIER_CURRENCY = "UnderlierCurrency";
-    private static final String PRODUCT__UNDERLIER_TYPE = "UnderlierType";
+    public static final String PRODUCT__NAME = "ProductName";
+    public static final String PRODUCT__TYPE = "ProductType";
+    public static final String PRODUCT__UNDERLIER_CODE = "UnderlierCode";
+    public static final String PRODUCT__UNDERLIER_CURRENCY = "UnderlierCurrency";
+    public static final String PRODUCT__UNDERLIER_TYPE = "UnderlierType";
     private static final String PRODUCT__UNDERLIER_VALUE = "UnderlierValue";
-    private static final String PRODUCT__BASE_MTM = "ProductBaseMtm";
+    public static final String PRODUCT__BASE_MTM = "ProductBaseMtm";
     private static final String PRODUCT__BUMPED_MTM_UP = "BumpedMtmUp";
     private static final String PRODUCT__BUMPED_MTM_DOWN = "BumpedMtmDown";
-    private static final String PRODUCT__THETA = "theta";
-    private static final String PRODUCT__RHO = "rho";
+    public static final String PRODUCT__THETA = "theta";
+    public static final String PRODUCT__RHO = "rho";
 
     // ///////////////////////////////////////////////
     // Trade store fields
 
     private static final String TRADE__ID = "Id";
-    private static final String TRADE__PRODUCT_ID = "ProductId";
+    public static final String TRADE__PRODUCT_ID = "ProductId";
     private static final String TRADE__PRODUCT_QTY_MULTIPLIER = "ProductQtyMultiplier";
-    private static final String TRADE__DESK = "Desk";
-    private static final String TRADE__BOOK_ID = "BookId";
+    public static final String TRADE__DESK = "Desk";
+    public static final String TRADE__BOOK_ID = "BookId";
     private static final String TRADE__COUNTERPARTY = "CounterParty";
-    private static final String TRADE__DATE = "Date";
-    private static final String TRADE__DATE_BUCKET = "DateBucket";
-    private static final String TRADE__STATUS = "Status";
-    private static final String TRADE__IS_SIMULATED = "IsSimulated";
+    public static final String TRADE__DATE = "Date";
+    public static final String TRADE__DATE_BUCKET = "DateBucket";
+    public static final String TRADE__STATUS = "Status";
+    public static final String TRADE__IS_SIMULATED = "IsSimulated";
 
     // ///////////////////////////////////////////////
     // Risk store fields
@@ -119,24 +119,24 @@ public class DatastoreDescriptionConfiguration implements IDatastoreDescriptionC
     public static final String RISK__AS_OF_DATE = "AsOfDate";
     public static final String RISK__HOST_NAME = "HostName";
     public static final String RISK__DELTA = "delta";
-    private static final String RISK__PNL_DELTA = "pnlDelta";
-    private static final String RISK__GAMMA = "gamma";
-    private static final String RISK__VEGA = "vega";
-    private static final String RISK__PNL_VEGA = "pnlVega";
-    private static final String RISK__PNL = "pnl";
+    public static final String RISK__PNL_DELTA = "pnlDelta";
+    public static final String RISK__GAMMA = "gamma";
+    public static final String RISK__VEGA = "vega";
+    public static final String RISK__PNL_VEGA = "pnlVega";
+    public static final String RISK__PNL = "pnl";
 
     // ///////////////////////////////////////////////
     // Forex store fields
 
-    private static final String FOREX_CURRENCY = "Currency";
-    private static final String FOREX_TARGET_CURRENCY = "TargetCurrency";
-    private static final String FOREX_RATE = "Rate";
+    public static final String FOREX_CURRENCY = "Currency";
+    public static final String FOREX_TARGET_CURRENCY = "TargetCurrency";
+    public static final String FOREX_RATE = "Rate";
 
     // ///////////////////////////////////////////////
     // Counterparty store fields
 
-    private static final String COUNTERPARTY__COUNTERPARTY = "CounterParty";
-    private static final String COUNTERPARTY__COUNTERPARTY_GROUP = "CounterPartyGroup";
+    public static final String COUNTERPARTY__COUNTERPARTY = "CounterParty";
+    public static final String COUNTERPARTY__COUNTERPARTY_GROUP = "CounterPartyGroup";
     private static final String COUNTERPARTY__SECTOR = "Sector";
     private static final String COUNTERPARTY__RATING = "Rating";
     private static final String COUNTERPARTY__CITY = "City";
@@ -145,7 +145,7 @@ public class DatastoreDescriptionConfiguration implements IDatastoreDescriptionC
     // City store fields
 
     private static final String CITY_NAME = "Name";
-    private static final String CITY_OBJECT = "City";
+    public static final String CITY_OBJECT = "City";
 
     // ////////////////////////////////////////////////
     // Stores

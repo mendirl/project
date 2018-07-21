@@ -1,15 +1,11 @@
 package org.mendirl.service.cube.configuration;
 
 import com.activeviam.builders.StartBuilding;
-import com.activeviam.desc.build.ICanBuildCubeDescription;
-import com.activeviam.desc.build.ICanStartBuildingMeasures;
-import com.activeviam.desc.build.IHasAtLeastOneMeasure;
-import com.activeviam.desc.build.dimensions.ICanStartBuildingDimensions;
 import com.qfs.desc.IDatastoreSchemaDescription;
 import com.qfs.server.cfg.IActivePivotManagerDescriptionConfig;
-import com.quartetfs.biz.pivot.definitions.IActivePivotInstanceDescription;
 import com.quartetfs.biz.pivot.definitions.IActivePivotManagerDescription;
 import com.quartetfs.biz.pivot.definitions.ISelectionDescription;
+import org.mendirl.service.cube.activepivot.pivot.EquityDerivativesCubeConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,7 +17,9 @@ public class ActivePivotManagerDescriptionConfiguration implements IActivePivotM
     private static final String MANAGER_NAME = "EquityDerivativesManager";
     private static final String CATALOG_NAME = "Catalog";
     private static final String SANDBOX_SCHEMA_NAME = "SandboxSchema";
-    private static final String CUBE_NAME = "EquityDerivativesCube";
+
+    public static final String CURRENCY = "Currency";
+    private static final String PRODUCT_ID = "productId";
 
     private IDatastoreSchemaDescription datastoreDescription;
 
@@ -37,26 +35,9 @@ public class ActivePivotManagerDescriptionConfiguration implements IActivePivotM
             .containingAllCubes()
             .withSchema(SANDBOX_SCHEMA_NAME)
             .withSelection(createSelectionDescription(this.datastoreDescription))
-            .withCube(createActivePivotInstanceDescription())
+            .withCube(EquityDerivativesCubeConfig.createCubeDescription(false))
             .build();
     }
-
-    private IActivePivotInstanceDescription createActivePivotInstanceDescription() {
-        return StartBuilding.cube(CUBE_NAME)
-            .withMeasures(ActivePivotManagerDescriptionConfiguration::measures)
-            .withDimensions(ActivePivotManagerDescriptionConfiguration::dimensions)
-            .build();
-    }
-
-    private static ICanBuildCubeDescription<IActivePivotInstanceDescription> dimensions(ICanStartBuildingDimensions builder) {
-        return builder.withDimension(RISK__AS_OF_DATE).withHierarchyOfSameName().slicing().withLevelOfSameName()
-            .withSingleLevelDimension(RISK__HOST_NAME).withSingleLevelDimension(RISK__TRADE_ID);
-    }
-
-    private static IHasAtLeastOneMeasure measures(ICanStartBuildingMeasures builder) {
-        return builder.withContributorsCount().withUpdateTimestamp().withAggregatedMeasure().sum(RISK__DELTA);
-    }
-
 
     /**
      * Creates the {@link ISelectionDescription} for the Sandbox schema.
@@ -69,6 +50,8 @@ public class ActivePivotManagerDescriptionConfiguration implements IActivePivotM
         return StartBuilding.selection(datastoreDescription)
             .fromBaseStore(RISK_STORE_NAME)
             .withAllReachableFields()
+            .withAlias(PRODUCT__UNDERLIER_CURRENCY, CURRENCY)
+            .withAlias(TRADE__PRODUCT_ID, PRODUCT_ID)
             .build();
     }
 
