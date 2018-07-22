@@ -5,6 +5,7 @@ import com.qfs.content.cfg.impl.ContentServerRestServicesConfig;
 import org.mendirl.service.cube.CubeSecurityConfiguration.AWebSecurityConfigurer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +14,7 @@ import static org.mendirl.service.cube.CubeSecurityConfiguration.ROLE_USER;
 
 @Configuration
 @Order(4)
+@Profile({"embedded-content"})
 public class ContentServerSecurityConfigurer extends AWebSecurityConfigurer {
 
 
