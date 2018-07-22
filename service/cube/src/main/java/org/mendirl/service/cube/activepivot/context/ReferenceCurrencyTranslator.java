@@ -4,7 +4,7 @@ import com.quartetfs.biz.pivot.context.ContextValueTranslationException;
 import com.quartetfs.biz.pivot.context.IContextValueTranslator;
 import com.quartetfs.biz.pivot.context.impl.SimpleContextValueTranslator;
 import com.quartetfs.fwk.QuartetPluginValue;
-import org.mendirl.service.cube.activepivot.ProductGenerator;
+import org.mendirl.service.cube.activepivot.source.ProductGenerator;
 
 import java.util.Collections;
 import java.util.HashSet;

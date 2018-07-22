@@ -104,7 +104,7 @@ public class EquityDerivativesCubeConfig {
 
             // Shared context values
             .withSharedContextValue(drillthroughProperties())
-            .withSharedContextValue(mdxContext(isActiveMonitorEnabled))
+//            .withSharedContextValue(mdxContext(isActiveMonitorEnabled))
             // Query maximum execution time (before timeout cancellation): 30s
             .withSharedContextValue(QueriesTimeLimit.of(30, TimeUnit.SECONDS))
             .withDescriptionPostProcessor(StartBuilding

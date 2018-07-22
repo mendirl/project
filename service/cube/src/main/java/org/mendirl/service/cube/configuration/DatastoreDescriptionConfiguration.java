@@ -31,7 +31,7 @@ public class DatastoreDescriptionConfiguration implements IDatastoreDescriptionC
     /**
      * Name of the product store
      */
-    private static final String PRODUCT_STORE_NAME = "Product";
+    public static final String PRODUCT_STORE_NAME = "Product";
 
     /**
      * Name of the trade store
@@ -51,7 +51,7 @@ public class DatastoreDescriptionConfiguration implements IDatastoreDescriptionC
     /**
      * Name of the counterparty store
      */
-    private static final String COUNTERPARTY_STORE_NAME = "CounterParty";
+    public static final String COUNTERPARTY_STORE_NAME = "CounterParty";
 
     /**
      * Name of the city store
