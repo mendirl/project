@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "org.mendirl.jhipster.service3",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.3.4",
+    "applicationType": "microservice",
+    "baseName": "service3",
+    "packageName": "org.mendirl.jhipster.service3",
+    "packageFolder": "org/mendirl/jhipster/service3",
+    "serverPort": "8083",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "cassandra",
+    "devDatabaseType": "cassandra",
+    "prodDatabaseType": "cassandra",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YmI0YzYwM2E0YjY4MWE3OWJlZWQyNjUyM2E3OWU3Y2MxMWYzNjVkZmMzNGJmNmQzMmRjODlkYTE0ODU4OTQwNDMzZTU5ZjliODE0MzU0MjRlYmMwOTA3MDQ0YmY1Yjc5OWU5NGMyZDYxNDljYTlkODg3Yjc2ODZkNjk2ODEwMzI=",
+    "enableTranslation": true,
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
