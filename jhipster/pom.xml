@@ -16,7 +16,7 @@
     <modules>
         <module>uaa</module>
         <module>gateway</module>
-        <module>service1</module>
+        <module>serviceone</module>
         <module>service2</module>
         <module>service3</module>
     </modules>
