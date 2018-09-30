@@ -1,14 +1,14 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "org.mendirl.jhipster.service2",
+        "packageName": "org.mendirl.jhipster.servicetwo",
       "nativeLanguage": "en"
     },
     "jhipsterVersion": "5.3.4",
     "applicationType": "microservice",
-    "baseName": "service2",
-    "packageName": "org.mendirl.jhipster.service2",
-    "packageFolder": "org/mendirl/jhipster/service2",
+      "baseName": "servicetwo",
+      "packageName": "org.mendirl.jhipster.servicetwo",
+      "packageFolder": "org/mendirl/jhipster/servicetwo",
     "serverPort": "8082",
     "authenticationType": "uaa",
     "uaaBaseName": "uaa",

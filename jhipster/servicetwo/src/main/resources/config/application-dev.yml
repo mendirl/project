@@ -17,7 +17,7 @@ logging:
     level:
         ROOT: DEBUG
         io.github.jhipster: DEBUG
-        org.mendirl.jhipster.service2: DEBUG
+        org.mendirl.jhipster.servicetwo: DEBUG
 
 eureka:
     instance:
@@ -42,8 +42,8 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:file:./target/h2db/db/service2;DB_CLOSE_DELAY=-1
-        username: service2
+        url: jdbc:h2:file:./target/h2db/db/servicetwo;DB_CLOSE_DELAY=-1
+        username: servicetwo
         password:
         hikari:
             auto-commit: false
@@ -61,7 +61,7 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
-            hibernate.cache.hazelcast.instance_name: service2
+            hibernate.cache.hazelcast.instance_name: servicetwo
             hibernate.cache.use_minimal_puts: true
             hibernate.cache.hazelcast.use_lite_member: true
     liquibase:
@@ -118,7 +118,7 @@ jhipster:
             client-id: internal
             client-secret: internal
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: service2@localhost
+        from: servicetwo@localhost
         base-url: http://127.0.0.1:8082
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:

@@ -1,8 +1,8 @@
 version: '2'
 services:
-    service3-cassandra-migration:
+    servicethree-cassandra-migration:
         environment:
-            - CASSANDRA_CONTACT_POINT=service3-cassandra
+            - CASSANDRA_CONTACT_POINT=servicethree-cassandra
             - USER=docker-cassandra-migration
             # - DEBUG_LOG=1 # uncomment to show debug logs during the migration process
         build:

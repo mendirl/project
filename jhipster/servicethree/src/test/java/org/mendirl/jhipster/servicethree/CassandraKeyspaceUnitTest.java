@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Service3App.class)
+@SpringBootTest(classes = ServicethreeApp.class)
 public class CassandraKeyspaceUnitTest extends AbstractCassandraTest {
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getCanonicalName());

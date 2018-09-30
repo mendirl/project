@@ -5,7 +5,7 @@ import ch.qos.logback.classic.LoggerContext;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mendirl.jhipster.servicetwo.Service2App;
+import org.mendirl.jhipster.servicetwo.ServicetwoApp;
 import org.mendirl.jhipster.servicetwo.config.SecurityBeanOverrideConfiguration;
 import org.mendirl.jhipster.servicetwo.web.rest.vm.LoggerVM;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see LogsResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, Service2App.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServicetwoApp.class})
 public class LogsResourceIntTest {
 
     private MockMvc restLogsMockMvc;

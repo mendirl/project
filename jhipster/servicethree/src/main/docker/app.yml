@@ -1,26 +1,26 @@
 version: '2'
 services:
-    service3-app:
-        image: service3
+    servicethree-app:
+        image: servicethree
         environment:
             # - _JAVA_OPTIONS=-Xmx512m -Xms256m
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
             - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=service3-cassandra
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=servicethree-cassandra
             - JHIPSTER_SLEEP=80 # gives time for uaa and the Cassandra cluster to start and execute the migration scripts
-    service3-cassandra:
+    servicethree-cassandra:
         extends:
             file: cassandra-cluster.yml
-            service: service3-cassandra
-    service3-cassandra-node:
+            service: servicethree-cassandra
+    servicethree-cassandra-node:
         image: cassandra:3.9
         environment:
-            - CASSANDRA_SEEDS=service3-cassandra
-    service3-cassandra-migration:
+            - CASSANDRA_SEEDS=servicethree-cassandra
+    servicethree-cassandra-migration:
         extends:
             file: cassandra-migration.yml
-            service: service3-cassandra-migration
+            service: servicethree-cassandra-migration
         environment:
             - CREATE_KEYSPACE_SCRIPT=create-keyspace-prod.cql
     jhipster-registry:

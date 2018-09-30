@@ -1,8 +1,8 @@
-CREATE KEYSPACE IF NOT EXISTS service3
+CREATE KEYSPACE IF NOT EXISTS servicethree
     WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }
     AND DURABLE_WRITES = true;
 
-CREATE TABLE IF NOT EXISTS service3.schema_version (
+CREATE TABLE IF NOT EXISTS servicethree.schema_version (
     script_name text,
     checksum text,
     executed_by text,

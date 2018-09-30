@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mendirl.jhipster.servicethree.AbstractCassandraTest;
-import org.mendirl.jhipster.servicethree.Service3App;
+import org.mendirl.jhipster.servicethree.ServicethreeApp;
 import org.mendirl.jhipster.servicethree.config.SecurityBeanOverrideConfiguration;
 import org.mendirl.jhipster.servicethree.web.rest.vm.LoggerVM;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see LogsResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, Service3App.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServicethreeApp.class})
 public class LogsResourceIntTest extends AbstractCassandraTest {
 
     private MockMvc restLogsMockMvc;

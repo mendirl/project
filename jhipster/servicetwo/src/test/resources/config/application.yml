@@ -17,17 +17,17 @@ eureka:
     client:
         enabled: false
     instance:
-        appname: service2
-        instanceId: service2:${spring.application.instance-id:${random.value}}
+        appname: servicetwo
+        instanceId: servicetwo:${spring.application.instance-id:${random.value}}
 
 spring:
     application:
-        name: service2
+        name: servicetwo
     cache:
         type: simple
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:service2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        url: jdbc:h2:mem:servicetwo;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
         name:
         username:
         password:

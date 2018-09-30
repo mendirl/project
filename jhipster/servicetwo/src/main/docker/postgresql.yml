@@ -1,11 +1,11 @@
 version: '2'
 services:
-    service2-postgresql:
+    servicetwo-postgresql:
         image: postgres:10.4
         # volumes:
-        #     - ~/volumes/jhipster/service2/postgresql/:/var/lib/postgresql/data/
+        #     - ~/volumes/jhipster/servicetwo/postgresql/:/var/lib/postgresql/data/
         environment:
-            - POSTGRES_USER=service2
+            - POSTGRES_USER=servicetwo
             - POSTGRES_PASSWORD=
         ports:
             - 5432:5432

@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mendirl.jhipster.servicethree.AbstractCassandraTest;
-import org.mendirl.jhipster.servicethree.Service3App;
+import org.mendirl.jhipster.servicethree.ServicethreeApp;
 import org.mendirl.jhipster.servicethree.config.SecurityBeanOverrideConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, Service3App.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServicethreeApp.class})
 public class ExceptionTranslatorIntTest extends AbstractCassandraTest {
 
     @Autowired

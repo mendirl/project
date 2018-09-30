@@ -2,7 +2,7 @@
   "generator-jhipster": {
     "promptValues": {
       "packageName": "org.mendirl.jhipster.serviceone",
-      "nativeLanguage": "fr"
+        "nativeLanguage": "en"
     },
     "jhipsterVersion": "5.3.4",
     "applicationType": "microservice",
@@ -26,13 +26,13 @@
     "jwtSecretKey": "YjExMWZmYzQyM2VjMDM2MzMxZTA3ODM4MDhlYTMwZGE5NmRkMGI0OWY3MTUwYjAxNjRlOWIyYjVhMDJmNTk1NWNmNzNiYzdhMTkzOTA4MWM2MDEwMzNmZWYyNTM3Y2M3YWI5MzRiNDQ3YTRmZmZkZWY3ZjBiOWUzMmMyYzBjYzE=",
     "enableTranslation": true,
     "languages": [
-      "fr",
-      "en"
+        "en",
+        "fr"
     ],
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "clientPackageManager": "npm",
-    "nativeLanguage": "fr",
+      "nativeLanguage": "en",
     "skipClient": true,
     "skipUserManagement": true
   }

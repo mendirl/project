@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-KEYSPACE_NAME=service3
+KEYSPACE_NAME=servicethree
 
 unset scripts
 declare -A scripts

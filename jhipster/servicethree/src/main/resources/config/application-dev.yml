@@ -17,7 +17,7 @@ logging:
     level:
         ROOT: DEBUG
         io.github.jhipster: DEBUG
-        org.mendirl.jhipster.service3: DEBUG
+        org.mendirl.jhipster.servicethree: DEBUG
 
 eureka:
     instance:
@@ -45,7 +45,7 @@ spring:
             contactPoints: localhost
             protocolVersion: V4
             compression: LZ4
-            keyspaceName: service3
+            keyspaceName: servicethree
     mail:
         host: localhost
         port: 25
@@ -98,7 +98,7 @@ jhipster:
             client-id: internal
             client-secret: internal
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: service3@localhost
+        from: servicethree@localhost
         base-url: http://127.0.0.1:8083
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:

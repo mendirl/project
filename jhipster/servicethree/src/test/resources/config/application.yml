@@ -17,12 +17,12 @@ eureka:
     client:
         enabled: false
     instance:
-        appname: service3
-        instanceId: service3:${spring.application.instance-id:${random.value}}
+        appname: servicethree
+        instanceId: servicethree:${spring.application.instance-id:${random.value}}
 
 spring:
     application:
-        name: service3
+        name: servicethree
     cache:
         type: simple
     data:

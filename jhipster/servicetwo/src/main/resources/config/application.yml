@@ -24,8 +24,8 @@ eureka:
         instance-info-replication-interval-seconds: 10
         registry-fetch-interval-seconds: 10
     instance:
-        appname: service2
-        instanceId: service2:${spring.application.instance-id:${random.value}}
+        appname: servicetwo
+        instanceId: servicetwo:${spring.application.instance-id:${random.value}}
         lease-renewal-interval-in-seconds: 5
         lease-expiration-duration-in-seconds: 10
         status-page-url-path: ${management.endpoints.web.base-path}/info
@@ -81,7 +81,7 @@ management:
 
 spring:
     application:
-        name: service2
+        name: servicetwo
     jpa:
         open-in-view: false
         hibernate:
@@ -132,11 +132,11 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: service2@localhost
+        from: servicetwo@localhost
     swagger:
         default-include-pattern: /api/.*
-        title: service2 API
-        description: service2 API documentation
+        title: servicetwo API
+        description: servicetwo API documentation
         version: 0.0.1
         terms-of-service-url:
         contact-name:
@@ -146,7 +146,7 @@ jhipster:
         license-url:
 
 logging:
-    file: target/service2.log
+    file: target/servicetwo.log
 
 # ===================================================================
 # Application specific properties

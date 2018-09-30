@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableFeignClients(basePackages = "org.mendirl.jhipster.service2")
+@EnableFeignClients(basePackages = "org.mendirl.jhipster.servicetwo")
 public class FeignConfiguration {
 
     /**

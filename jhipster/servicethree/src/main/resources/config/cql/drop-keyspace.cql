@@ -1,1 +1,1 @@
-DROP KEYSPACE IF EXISTS service3;
+DROP KEYSPACE IF EXISTS servicethree;

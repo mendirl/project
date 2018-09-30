@@ -1,7 +1,7 @@
 {
-  "name": "service-3",
+  "name": "servicethree",
   "version": "0.0.0",
-  "description": "Description for service3",
+  "description": "Description for servicethree",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

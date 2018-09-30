@@ -3,7 +3,7 @@ package org.mendirl.jhipster.servicetwo.web.rest.errors;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mendirl.jhipster.servicetwo.Service2App;
+import org.mendirl.jhipster.servicetwo.ServicetwoApp;
 import org.mendirl.jhipster.servicetwo.config.SecurityBeanOverrideConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, Service2App.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServicetwoApp.class})
 public class ExceptionTranslatorIntTest {
 
     @Autowired
