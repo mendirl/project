@@ -1,8 +1,9 @@
 package org.mendirl.jhipster.servicethree;
 
+import io.github.jhipster.config.JHipsterConstants;
+
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
-import io.github.jhipster.config.JHipsterConstants;
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.thrift.transport.TTransportException;
 import org.cassandraunit.CQLDataLoader;

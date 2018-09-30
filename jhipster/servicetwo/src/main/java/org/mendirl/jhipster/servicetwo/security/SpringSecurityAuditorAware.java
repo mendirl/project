@@ -1,10 +1,11 @@
 package org.mendirl.jhipster.servicetwo.security;
 
 import org.mendirl.jhipster.servicetwo.config.Constants;
-import org.springframework.data.domain.AuditorAware;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.stereotype.Component;
 
 /**
  * Implementation of AuditorAware based on Spring Security.

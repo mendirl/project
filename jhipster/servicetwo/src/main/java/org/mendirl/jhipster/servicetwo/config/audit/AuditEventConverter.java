@@ -1,6 +1,7 @@
 package org.mendirl.jhipster.servicetwo.config.audit;
 
 import org.mendirl.jhipster.servicetwo.domain.PersistentAuditEvent;
+
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;

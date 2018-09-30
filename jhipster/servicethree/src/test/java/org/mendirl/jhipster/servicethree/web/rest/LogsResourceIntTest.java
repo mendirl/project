@@ -1,14 +1,14 @@
 package org.mendirl.jhipster.servicethree.web.rest;
 
+import org.mendirl.jhipster.servicethree.AbstractCassandraTest;
+import org.mendirl.jhipster.servicethree.ServicethreeApp;
+import org.mendirl.jhipster.servicethree.config.SecurityBeanOverrideConfiguration;
+import org.mendirl.jhipster.servicethree.web.rest.vm.LoggerVM;
 import ch.qos.logback.classic.AsyncAppender;
 import ch.qos.logback.classic.LoggerContext;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mendirl.jhipster.servicethree.AbstractCassandraTest;
-import org.mendirl.jhipster.servicethree.ServicethreeApp;
-import org.mendirl.jhipster.servicethree.config.SecurityBeanOverrideConfiguration;
-import org.mendirl.jhipster.servicethree.web.rest.vm.LoggerVM;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;

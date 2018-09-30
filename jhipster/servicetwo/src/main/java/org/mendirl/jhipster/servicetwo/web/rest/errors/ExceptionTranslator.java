@@ -1,6 +1,7 @@
 package org.mendirl.jhipster.servicetwo.web.rest.errors;
 
 import org.mendirl.jhipster.servicetwo.web.rest.util.HeaderUtil;
+
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

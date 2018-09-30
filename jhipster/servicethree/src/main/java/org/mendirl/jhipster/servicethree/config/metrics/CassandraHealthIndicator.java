@@ -1,4 +1,4 @@
-package org.mendirl.jhipster.servicethree.config.metrics;
+package  org.mendirl.jhipster.servicethree.config.metrics;
 
 import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;

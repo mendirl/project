@@ -1,10 +1,12 @@
 package org.mendirl.jhipster.serviceone;
 
-import io.github.jhipster.config.JHipsterConstants;
-import org.apache.commons.lang3.StringUtils;
 import org.mendirl.jhipster.serviceone.client.OAuth2InterceptedFeignConfiguration;
 import org.mendirl.jhipster.serviceone.config.ApplicationProperties;
 import org.mendirl.jhipster.serviceone.config.DefaultProfileUtil;
+
+import io.github.jhipster.config.JHipsterConstants;
+
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -105,6 +107,6 @@ public class ServiceoneApp {
             configServerStatus = "Not found or not setup for this application";
         }
         log.info("\n----------------------------------------------------------\n\t" +
-            "Config Server: \t{}\n----------------------------------------------------------", configServerStatus);
+                "Config Server: \t{}\n----------------------------------------------------------", configServerStatus);
     }
 }

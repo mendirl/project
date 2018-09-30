@@ -1,6 +1,7 @@
 package org.mendirl.jhipster.servicethree.aop.logging;
 
 import io.github.jhipster.config.JHipsterConstants;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -42,8 +43,8 @@ public class LoggingAspect {
     /**
      * Pointcut that matches all Spring beans in the application's main packages.
      */
-    @Pointcut("within(org.mendirl.jhipster.servicethree.repository..*)" +
-        " || within(org.mendirl.jhipster.servicethree.service..*)" +
+    @Pointcut("within(org.mendirl.jhipster.servicethree.repository..*)"+
+        " || within(org.mendirl.jhipster.servicethree.service..*)"+
         " || within(org.mendirl.jhipster.servicethree.web.rest..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.

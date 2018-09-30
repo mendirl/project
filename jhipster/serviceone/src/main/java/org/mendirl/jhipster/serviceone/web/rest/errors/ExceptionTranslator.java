@@ -1,6 +1,7 @@
 package org.mendirl.jhipster.serviceone.web.rest.errors;
 
 import org.mendirl.jhipster.serviceone.web.rest.util.HeaderUtil;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;

@@ -1,9 +1,10 @@
 package org.mendirl.jhipster.serviceone.web.rest;
 
+import org.mendirl.jhipster.serviceone.web.rest.vm.LoggerVM;
+
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import com.codahale.metrics.annotation.Timed;
-import org.mendirl.jhipster.serviceone.web.rest.vm.LoggerVM;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
