@@ -17,8 +17,8 @@
         <module>uaa</module>
         <module>gateway</module>
         <module>serviceone</module>
-        <module>service2</module>
-        <module>service3</module>
+        <module>servicetwo</module>
+        <module>servicethree</module>
     </modules>
 
 </project>
