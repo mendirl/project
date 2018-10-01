@@ -12,12 +12,12 @@ Launch all your infrastructure by running: `docker-compose up -d`.
 ### Applications and dependencies:
 - gateway (gateway application)
 - gateway's postgresql database
-- service1 (microservice application)
-- service1's no database
-- service2 (microservice application)
-- service2's postgresql database
-- service3 (microservice application)
-- service3's cassandra database
+- serviceone (microservice application)
+- serviceone's no database
+- servicethree (microservice application)
+- servicethree's cassandra database
+- servicetwo (microservice application)
+- servicetwo's postgresql database
 - uaa (uaa application)
 - uaa's postgresql database
 

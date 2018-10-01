@@ -17,8 +17,8 @@ services:
             - POSTGRES_USER=gateway
             - POSTGRES_PASSWORD=
     
-    service1-app:
-        image: service1
+    serviceone-app:
+        image: serviceone
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
@@ -26,46 +26,46 @@ services:
             - JHIPSTER_SLEEP=30
             - JHIPSTER_REGISTRY_PASSWORD=admin
     
-    service2-app:
-        image: service2
+    servicethree-app:
+        image: servicethree
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
             - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-            - SPRING_DATASOURCE_URL=jdbc:postgresql://service2-postgresql:5432/service2
-            - JHIPSTER_SLEEP=30
-            - JHIPSTER_REGISTRY_PASSWORD=admin
-    service2-postgresql:
-        image: postgres:10.4
-        environment:
-            - POSTGRES_USER=service2
-            - POSTGRES_PASSWORD=
-    
-    service3-app:
-        image: service3
-        environment:
-            - SPRING_PROFILES_ACTIVE=prod,swagger
-            - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
-            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=service3-cassandra
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=servicethree-cassandra
             - JHIPSTER_SLEEP=80
             - JHIPSTER_REGISTRY_PASSWORD=admin
-    service3-cassandra-node:
+    servicethree-cassandra-node:
         image: cassandra:3.9
         environment:
-            - CASSANDRA_SEEDS=service3-cassandra
-    service3-cassandra-migration:
+            - CASSANDRA_SEEDS=servicethree-cassandra
+    servicethree-cassandra-migration:
         environment:
-            - CASSANDRA_CONTACT_POINT=service3-cassandra
+            - CASSANDRA_CONTACT_POINT=servicethree-cassandra
             - USER=docker-cassandra-migration
             - CREATE_KEYSPACE_SCRIPT=create-keyspace-prod.cql
         build:
-            context: ..\service3\src\main\docker
+            context: ..\servicethree\src\main\docker
             dockerfile: cassandra/Cassandra-Migration.Dockerfile
         volumes:
-            - ..\service3\src\main\resources\config\cql:/cql:ro
-    service3-cassandra:
+            - ..\servicethree\src\main\resources\config\cql:/cql:ro
+    servicethree-cassandra:
         image: cassandra:3.9
+    
+    servicetwo-app:
+        image: servicetwo
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+            - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://servicetwo-postgresql:5432/servicetwo
+            - JHIPSTER_SLEEP=30
+            - JHIPSTER_REGISTRY_PASSWORD=admin
+    servicetwo-postgresql:
+        image: postgres:10.4
+        environment:
+            - POSTGRES_USER=servicetwo
+            - POSTGRES_PASSWORD=
     
     uaa-app:
         image: uaa
