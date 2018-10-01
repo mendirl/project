@@ -32,6 +32,9 @@ application {
     authenticationType uaa,
     uaaBaseName "uaa",
     databaseType no,
+    prodDatabaseType no,
+    devDatabaseType no,
+    enableHibernateCache false,
     useSass true,
     serverPort 8081
   }
