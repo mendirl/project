@@ -1,4 +1,3 @@
-// OK except jwt base64-secret
 application {
   config {
     baseName uaa,
@@ -11,7 +10,6 @@ application {
   }
 }
 
-// OK
 application {
   config {
     baseName gateway,
