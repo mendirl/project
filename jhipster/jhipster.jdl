@@ -1,0 +1,70 @@
+// OK except jwt base64-secret
+application {
+  config {
+    baseName uaa,
+    applicationType uaa,
+    packageName org.mendirl.jhipster.uaa,
+    serviceDiscoveryType eureka,
+    uaaBaseName "uaa",
+    prodDatabaseType postgresql,
+    useSass true
+  }
+}
+
+// OK
+application {
+  config {
+    baseName gateway,
+    applicationType gateway,
+    packageName org.mendirl.jhipster.gateway,
+    serviceDiscoveryType eureka,
+    authenticationType uaa,
+    uaaBaseName "uaa",
+    prodDatabaseType postgresql,
+    useSass true
+  }
+}
+
+application {
+  config {
+    baseName serviceone,
+    applicationType microservice,
+    packageName org.mendirl.jhipster.serviceone,
+    serviceDiscoveryType eureka,
+    authenticationType uaa,
+    uaaBaseName "uaa",
+    databaseType no,
+    useSass true,
+    serverPort 8081
+  }
+}
+
+application {
+  config {
+    baseName servicetwo,
+    applicationType microservice,
+    packageName org.mendirl.jhipster.servicetwo,
+    serviceDiscoveryType eureka,
+    authenticationType uaa,
+    uaaBaseName "uaa",
+    prodDatabaseType postgresql,
+    useSass true,
+    serverPort 8082
+  }
+}
+
+application {
+  config {
+    baseName servicethree,
+    applicationType microservice,
+    packageName org.mendirl.jhipster.servicethree,
+    serviceDiscoveryType eureka,
+    authenticationType uaa,
+    uaaBaseName "uaa",
+    databaseType cassandra,
+    devDatabaseType cassandra,
+    prodDatabaseType cassandra,
+    useSass true,
+    serverPort 8083
+  }
+}

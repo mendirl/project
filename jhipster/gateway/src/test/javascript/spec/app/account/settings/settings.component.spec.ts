@@ -12,15 +12,17 @@ describe('Component Tests', () => {
         let mockAuth: any;
         let mockPrincipal: any;
 
-        beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                imports: [GatewayTestModule],
-                declarations: [SettingsComponent],
-                providers: []
+        beforeEach(
+            async(() => {
+                TestBed.configureTestingModule({
+                    imports: [GatewayTestModule],
+                    declarations: [SettingsComponent],
+                    providers: []
+                })
+                    .overrideTemplate(SettingsComponent, '')
+                    .compileComponents();
             })
-                .overrideTemplate(SettingsComponent, '')
-                .compileComponents();
-        }));
+        );
 
         beforeEach(() => {
             fixture = TestBed.createComponent(SettingsComponent);
@@ -37,7 +39,7 @@ describe('Component Tests', () => {
 
                 activated: true,
                 email: 'john.doe@mail.com',
-                langKey: 'fr',
+                langKey: 'en',
                 login: 'john'
             };
             mockPrincipal.setResponse(accountValues);

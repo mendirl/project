@@ -1,37 +1,38 @@
 {
   "generator-jhipster": {
-    "promptValues": {
-      "packageName": "org.mendirl.jhipster.uaa",
-      "nativeLanguage": "fr"
-    },
-    "jhipsterVersion": "5.3.4",
     "applicationType": "uaa",
-    "baseName": "uaa",
-    "packageName": "org.mendirl.jhipster.uaa",
-    "packageFolder": "org/mendirl/jhipster/uaa",
-    "serverPort": "9999",
-    "authenticationType": "uaa",
-    "cacheProvider": "hazelcast",
-    "enableHibernateCache": true,
-    "websocket": false,
+    "clientPackageManager": "npm",
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "org.mendirl.jhipster.uaa",
+    "packageFolder": "org/mendirl/jhipster/uaa",
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
-    "messageBroker": false,
     "serviceDiscoveryType": "eureka",
-    "buildTool": "maven",
-    "enableSwaggerCodegen": false,
-    "jwtSecretKey": "ZTBmZDUxZjYyYTA0Y2MyOWQ3YjQ3NmZlZjQ5YWNlOWVhNjM4NTVlZjEyZTFiNjkwOThiNWYwZmNlNmYzZWYwMGE5NGYxZWY3ZjgxZWIxODM2NWY4ZmYzNWI1ZGMzZGY2YTU2N2I5ZDc1NzhmMzFkMmEzMDI0M2E3MDJiYTY5NGQ=",
-    "enableTranslation": true,
-    "languages": [
-      "fr",
-      "en"
-    ],
+    "skipClient": true,
+    "skipServer": false,
     "testFrameworks": [],
-    "jhiPrefix": "jhi",
-    "clientPackageManager": "npm",
-    "nativeLanguage": "fr",
-    "skipClient": true
-  }
+    "useSass": true,
+    "websocket": false,
+    "baseName": "uaa",
+    "uaaBaseName": "uaa",
+    "jhipsterVersion": "5.3.4",
+    "authenticationType": "uaa",
+    "buildTool": "maven",
+    "cacheProvider": "hazelcast",
+    "clientFramework": "angularX",
+    "serverPort": "9999",
+    "skipUserManagement": false
+  },
+  "entities": []
 }

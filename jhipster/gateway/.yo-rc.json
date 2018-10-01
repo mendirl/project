@@ -1,38 +1,38 @@
 {
   "generator-jhipster": {
-    "promptValues": {
-      "packageName": "org.mendirl.jhipster.gateway",
-      "nativeLanguage": "fr"
-    },
-    "jhipsterVersion": "5.3.4",
     "applicationType": "gateway",
-    "baseName": "gateway",
-    "packageName": "org.mendirl.jhipster.gateway",
-    "packageFolder": "org/mendirl/jhipster/gateway",
-    "serverPort": "8080",
-    "authenticationType": "uaa",
-    "uaaBaseName": "uaa",
-    "cacheProvider": "hazelcast",
-    "enableHibernateCache": true,
-    "websocket": false,
+    "clientPackageManager": "npm",
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "org.mendirl.jhipster.gateway",
+    "packageFolder": "org/mendirl/jhipster/gateway",
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
-    "messageBroker": false,
     "serviceDiscoveryType": "eureka",
-    "buildTool": "maven",
-    "enableSwaggerCodegen": false,
-    "clientFramework": "angularX",
-    "useSass": true,
-    "clientPackageManager": "npm",
+    "skipClient": false,
+    "skipServer": false,
     "testFrameworks": [],
-    "jhiPrefix": "jhi",
-    "enableTranslation": true,
-    "nativeLanguage": "fr",
-    "languages": [
-      "fr",
-      "en"
-    ]
-  }
+    "useSass": true,
+    "websocket": false,
+    "baseName": "gateway",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
+    "jhipsterVersion": "5.3.4",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "serverPort": "8080",
+    "skipUserManagement": false
+  },
+  "entities": []
 }
