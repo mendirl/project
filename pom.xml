@@ -11,7 +11,6 @@
 
     <modules>
         <module>service</module>
-        <module>jhipster</module>
         <module>bigdata</module>
     </modules>
 
