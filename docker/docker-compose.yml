@@ -1,0 +1,12 @@
+version: '3'
+services:
+  console:
+    image: console:latest
+    container_name: console
+    ports:
+      - 8888:8080
+  kconsumer:
+    image: kconsumer:latest
+    container_name: kconsumer
+    ports:
+      - 8081:8080

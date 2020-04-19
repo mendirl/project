@@ -4,16 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.mendirl</groupId>
-    <artifactId>dependencies</artifactId>
-    <version>${revision}</version>
+    <parent>
+        <groupId>io.mendirl</groupId>
+        <artifactId>quarkus</artifactId>
+        <version>${revision}</version>
+        <relativePath>../</relativePath>
+    </parent>
 
+    <artifactId>quarkus-test</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>dependencies-common</module>
-        <module>dependencies-spring</module>
-        <module>dependencies-quarkus</module>
+        <module>getting-started-reactive</module>
+        <module>getting-started-reactive-crud</module>
     </modules>
 
 </project>

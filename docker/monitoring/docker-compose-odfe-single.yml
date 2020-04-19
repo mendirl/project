@@ -1,0 +1,89 @@
+version: '3'
+services:
+  odfe-single:
+    image: amazon/opendistro-for-elasticsearch:1.6.0
+    container_name: odfe-single
+    environment:
+      - node.name=odfe-single
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
+      - network.host=0.0.0.0
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+      restart_policy:
+        condition: any
+    volumes:
+      - odfe-single:/usr/share/elasticsearch/data
+      #      - ./es-config/custom-elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      #      - ./es-config/custom-security-config.yml:/usr/share/elasticsearch/plugins/opendistro_security/config.yml
+      - ./es-config/internal_users.yml:/usr/share/elasticsearch/plugins/opendistro_security/securityconfig/internal_users.yml
+      - ./es-config/roles_mapping.yml:/usr/share/elasticsearch/plugins/opendistro_security/securityconfig/roles_mapping.yml
+      - ./es-config/tenants.yml:/usr/share/elasticsearch/plugins/opendistro_security/securityconfig/tenants.yml
+      - ./es-config/roles.yml:/usr/share/elasticsearch/plugins/opendistro_security/securityconfig/roles.yml
+      - ./es-config/action_groups.yml:/usr/share/elasticsearch/plugins/opendistro_security/securityconfig/action_groups.yml
+    ports:
+      - 9200:9200
+      - 9300:9300
+      - 9600:9600
+
+  kibana:
+    image: amazon/opendistro-for-elasticsearch-kibana:1.6.0
+    container_name: odfe-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=https://odfe-single:9200
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+      restart_policy:
+        condition: any
+    #    volumes:
+    #      - ./custom-kibana.yml:/usr/share/kibana/config/kibana.yml
+    ports:
+      - 5601:5601
+    depends_on:
+      - odfe-single
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash-oss:7.6.2
+    container_name: logstash
+    environment:
+      - INPUT_TCP_PORT=5000
+      - INPUT_UDP_PORT=5000
+      - INPUT_HTTP_PORT=5001
+      - ELASTICSEARCH_HOST=odfe-single
+      - ELASTICSEARCH_PORT=9200
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+      restart_policy:
+        condition: any
+    volumes:
+      - ./logstash-config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    #      - ./logstash-config/custom-logstash.yml:/usr/share/logstash/config/logstash.yml
+    ports:
+      - 5000:5000
+      - 5000:5000/udp
+      - 5001:5001
+    depends_on:
+      - odfe-single
+
+volumes:
+  odfe-single:
+    external: true
+
+networks:
+  default:
+    external:
+      name: odfe-network-single

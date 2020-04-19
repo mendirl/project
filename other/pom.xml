@@ -5,15 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.mendirl</groupId>
-    <artifactId>dependencies</artifactId>
+    <artifactId>other</artifactId>
     <version>${revision}</version>
-
     <packaging>pom</packaging>
 
     <modules>
-        <module>dependencies-common</module>
-        <module>dependencies-spring</module>
-        <module>dependencies-quarkus</module>
+        <module>test</module>
     </modules>
 
 </project>

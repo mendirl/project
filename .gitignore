@@ -37,6 +37,7 @@ local.properties
 .loadpath
 .factorypath
 /src/main/resources/rebel.xml
+bin/
 
 # External tool builders
 .externalToolBuilders/**
@@ -59,6 +60,7 @@ local.properties
 *.ipr
 *.ids
 *.orig
+*.rej
 classes/
 out/
 
@@ -68,11 +70,26 @@ out/
 .vscode/
 
 ######################
+# Vim
+######################
+*.swp
+*.swo
+
+######################
+# NetBeans
+######################
+nb-configuration.xml
+
+######################
 # Maven
 ######################
 /log/
 target/
 .mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
 
 ######################
 # Gradle
