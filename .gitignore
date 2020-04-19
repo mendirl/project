@@ -1,7 +1,7 @@
 ######################
 # Project Specific
 ######################
-/target/www/**
+/target/classes/static/**
 /src/test/javascript/coverage/
 
 ######################
@@ -12,7 +12,7 @@ node_tmp/
 node_modules/
 npm-debug.log.*
 /.awcache/*
-.cache-loader
+/.cache-loader/*
 
 ######################
 # SASS
@@ -51,6 +51,8 @@ bin/
 # PDT-specific
 .buildpath
 
+# STS-specific
+/.sts4-cache/*
 ######################
 # Intellij
 ######################
@@ -60,7 +62,6 @@ bin/
 *.ipr
 *.ids
 *.orig
-*.rej
 classes/
 out/
 

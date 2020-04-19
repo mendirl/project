@@ -2,15 +2,15 @@ spring:
   cloud:
     consul:
       enabled: false
+      config:
+        enabled: false
 
 ---
 
-spring.profiles: consul
+spring.profiles: cloud
 spring:
   cloud:
     consul:
       enabled: true
-      discovery:
-        instanceId: ${spring.application.name}:${random.value}
-        health-check-path: ${server.servlet.context-path}/actuator/health
-        tags: management.context-path=${server.servlet.context-path}/actuator, health.path=health
+      config:
+        enabled: true

@@ -4,9 +4,14 @@ services:
     image: console:latest
     container_name: console
     ports:
-      - 8888:8080
+      - 8888:8888
   kconsumer:
     image: kconsumer:latest
     container_name: kconsumer
     ports:
-      - 8081:8080
+      - 8082:8282
+  kproducer:
+    image: kproducer:latest
+    container_name: kproducer
+    ports:
+      - 8083:8383
