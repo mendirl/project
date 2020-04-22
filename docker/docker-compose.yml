@@ -5,13 +5,29 @@ services:
     container_name: console
     ports:
       - 8888:8888
+    environment:
+      - spring_profiles_active=cloud
+      - spring_cloud_consul_host=consul
   kconsumer:
     image: kconsumer:latest
     container_name: kconsumer
     ports:
       - 8082:8282
+    environment:
+      - spring_profiles_active=cloud
+      - spring_cloud_consul_host=consul
+      - spring_cloud_consul_discovery_hostname=kconsumer
   kproducer:
     image: kproducer:latest
     container_name: kproducer
     ports:
       - 8083:8383
+    environment:
+      - spring_profiles_active=cloud
+      - spring_cloud_consul_host=consul
+      - spring_cloud_consul_discovery_hostname=kproducer
+
+networks:
+  default:
+    external:
+      name: mendirl
