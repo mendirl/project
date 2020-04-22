@@ -28,7 +28,7 @@
         <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
         <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
-        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <springfox-swagger2.version>3.0.0-SNAPSHOT</springfox-swagger2.version>
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
         <!--        <jaxb.version>2.3.2</jaxb.version>-->
 
@@ -99,45 +99,11 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${springfox-swagger2.version}</version>
             </dependency>
-            <!--            &lt;!&ndash; big data &ndash;&gt;-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.apache.parquet</groupId>-->
-            <!--                <artifactId>parquet-avro</artifactId>-->
-            <!--                <version>${parquet.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.apache.hadoop</groupId>-->
-            <!--                <artifactId>hadoop-common</artifactId>-->
-            <!--                <version>${hadoop-common.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.apache.spark</groupId>-->
-            <!--                <artifactId>spark-sql_2.11</artifactId>-->
-            <!--                <version>${spark.version}</version>-->
-            <!--                <exclusions>-->
-            <!--                    <exclusion>-->
-            <!--                        <artifactId>slf4j-log4j12</artifactId>-->
-            <!--                        <groupId>org.slf4j</groupId>-->
-            <!--                    </exclusion>-->
-            <!--                </exclusions>-->
-            <!--            </dependency>-->
-
-            <!--            &lt;!&ndash; for java > 8 &ndash;&gt;-->
-            <!--            <dependency>-->
-            <!--                <groupId>javax.xml.bind</groupId>-->
-            <!--                <artifactId>jaxb-api</artifactId>-->
-            <!--                <version>${jaxb.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>com.sun.xml.bind</groupId>-->
-            <!--                <artifactId>jaxb-core</artifactId>-->
-            <!--                <version>${jaxb.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>com.sun.xml.bind</groupId>-->
-            <!--                <artifactId>jaxb-impl</artifactId>-->
-            <!--                <version>${jaxb.version}</version>-->
-            <!--            </dependency>-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-webflux</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
