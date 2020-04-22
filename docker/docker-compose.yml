@@ -8,6 +8,7 @@ services:
     environment:
       - spring_profiles_active=cloud
       - spring_cloud_consul_host=consul
+      - spring_cloud_consul_discovery_hostname=console
   kconsumer:
     image: kconsumer:latest
     container_name: kconsumer
