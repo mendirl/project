@@ -26,7 +26,7 @@
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
-        <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
+        <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <springfox-swagger2.version>3.0.0-SNAPSHOT</springfox-swagger2.version>
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
