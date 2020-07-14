@@ -28,7 +28,7 @@
         <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
         <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
-        <springfox-swagger2.version>3.0.0-SNAPSHOT</springfox-swagger2.version>
+        <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
         <!--        <jaxb.version>2.3.2</jaxb.version>-->
 
