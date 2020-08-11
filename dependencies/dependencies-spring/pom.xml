@@ -45,7 +45,7 @@
         <!-- https://mvnrepository.com/artifact/com.spotify/dockerfile-maven-plugin -->
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/com.google.cloud.tools/jib-maven-plugin -->
-        <jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
+        <jib-maven-plugin.version>2.5.1</jib-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
 
