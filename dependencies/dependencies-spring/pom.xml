@@ -41,7 +41,7 @@
 
         <!-- maven plugins -->
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
-        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
         <!-- https://mvnrepository.com/artifact/com.spotify/dockerfile-maven-plugin -->
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/com.google.cloud.tools/jib-maven-plugin -->
