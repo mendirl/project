@@ -33,7 +33,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-failsafe-plugin -->
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/flatten-maven-plugin -->
-        <flatten-maven-plugin.version>1.2.4</flatten-maven-plugin.version>
+        <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
