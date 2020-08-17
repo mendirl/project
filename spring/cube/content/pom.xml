@@ -13,7 +13,6 @@
   <artifactId>service-content</artifactId>
 
   <properties>
-    <main-class>org.mendirl.service.content.ContentApplication</main-class>
     <docker-repository>content</docker-repository>
   </properties>
 

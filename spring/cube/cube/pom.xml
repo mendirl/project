@@ -13,7 +13,6 @@
   <artifactId>service-cube</artifactId>
 
   <properties>
-    <main-class>org.mendirl.service.cube.CubeApplication</main-class>
     <docker-repository>cube</docker-repository>
   </properties>
 

@@ -14,7 +14,6 @@
     <name>kconsumer</name>
 
     <properties>
-        <main-class>org.mendirl.service.kconsumer.KConsumerApplication</main-class>
     </properties>
 
     <dependencies>

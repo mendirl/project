@@ -141,17 +141,18 @@
                     <version>${sonar-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/usage.html -->
+                    <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/ -->
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
                     <configuration>
-                        <mainClass>${main-class}</mainClass>
+                        <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#goals-repackage-parameters-details-executable -->
                         <executable>true</executable>
                     </configuration>
                     <executions>
                         <execution>
                             <goals>
+                                <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#goals-build-info -->
                                 <goal>build-info</goal>
                             </goals>
                         </execution>

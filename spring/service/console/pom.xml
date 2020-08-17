@@ -14,7 +14,6 @@
     <name>console</name>
 
     <properties>
-        <main-class>org.mendirl.service.console.ConsoleApplication</main-class>
     </properties>
 
     <dependencies>

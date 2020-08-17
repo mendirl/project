@@ -14,7 +14,6 @@
     <name>kproducer</name>
 
     <properties>
-        <main-class>org.mendirl.service.kproducer.KProducerApplication</main-class>
     </properties>
 
     <dependencies>
