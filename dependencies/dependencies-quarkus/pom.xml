@@ -18,7 +18,7 @@
     <properties>
         <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-universe-bom -->
         <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-maven-plugin -->
-        <quarkus.version>1.7.0.Final</quarkus.version>
+        <quarkus.version>1.7.1.Final</quarkus.version>
     </properties>
 
     <dependencyManagement>
