@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.mendirl</groupId>
         <artifactId>dependencies-common</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../dependencies-common</relativePath>
     </parent>
 
@@ -109,16 +109,12 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>**/application*.yml</include>
-                    <include>**/application*.yaml</include>
-                    <include>**/application*.properties</include>
                 </includes>
             </resource>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
                 <excludes>
                     <exclude>**/application*.yml</exclude>
-                    <exclude>**/application*.yaml</exclude>
-                    <exclude>**/application*.properties</exclude>
                 </excludes>
             </resource>
         </resources>
