@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-test</module>
+        <module>spring-samples</module>
         <module>service</module>
         <!-- <module>bigdata</module> -->
         <!--  <module>cube</module> -->

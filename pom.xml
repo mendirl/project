@@ -11,10 +11,11 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>parent</module>
         <module>dependencies</module>
+        <module>other</module>
         <module>spring</module>
         <module>quarkus</module>
-        <module>other</module>
     </modules>
 
 </project>

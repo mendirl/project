@@ -6,9 +6,9 @@
 
     <parent>
         <groupId>io.mendirl</groupId>
-        <artifactId>project-build</artifactId>
+        <artifactId>parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <relativePath>../../parent</relativePath>
     </parent>
 
     <artifactId>dependencies-common</artifactId>
