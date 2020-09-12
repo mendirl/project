@@ -1,0 +1,30 @@
+###
+GET http://localhost:8080/fruits
+
+###
+GET http://localhost:8080/fruits/2
+
+###
+POST http://localhost:8080/fruits
+Content-Type: application/json
+
+{
+    "id" : 5,
+    "name" : "pomme"
+}
+
+###
+PUT http://localhost:8080/fruits/5
+Content-Type: application/json
+
+{
+    "id" : 5,
+    "name" : "poire"
+}
+
+###
+DELETE http://localhost:8080/fruits/1
+
+###
+GET http://localhost:8080/fruit-data/apple
+

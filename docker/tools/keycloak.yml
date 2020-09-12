@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD:postgres
 
   keycloak:
-    image: jboss/keycloak:9.0.3
+    image: jboss/keycloak
     ports:
       - 8080:8080
     environment:

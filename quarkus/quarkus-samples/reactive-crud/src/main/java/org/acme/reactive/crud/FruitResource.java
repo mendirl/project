@@ -4,6 +4,7 @@ import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.pgclient.PgPool;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.annotation.PostConstruct;
@@ -17,13 +18,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 import java.net.URI;
 
-@Path("/fruits")
+@Path("fruits")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class FruitResource {
+
+
+    private static final Logger LOG = Logger.getLogger(FruitResource.class);
 
     @Inject
     @ConfigProperty(name = "myapp.schema.create", defaultValue = "true")
@@ -34,19 +39,22 @@ public class FruitResource {
 
     @PostConstruct
     void config() {
+        LOG.info("FruitResource config");
+
         if (schemaCreate) {
+            LOG.info("init db schema");
             initdb();
         }
     }
 
     private void initdb() {
         client.query("DROP TABLE IF EXISTS fruits").execute()
-                .flatMap(r -> client.query("CREATE TABLE fruits (id SERIAL PRIMARY KEY, name TEXT NOT NULL)").execute())
-                .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Kiwi')").execute())
-                .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Durian')").execute())
-                .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Pomelo')").execute())
-                .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Lychee')").execute())
-                .await().indefinitely();
+            .flatMap(r -> client.query("CREATE TABLE fruits (id SERIAL PRIMARY KEY, name TEXT NOT NULL)").execute())
+            .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Kiwi')").execute())
+            .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Durian')").execute())
+            .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Pomelo')").execute())
+            .flatMap(r -> client.query("INSERT INTO fruits (name) VALUES ('Lychee')").execute())
+            .await().indefinitely();
     }
 
     @GET
@@ -59,7 +67,7 @@ public class FruitResource {
     public Uni<Response> getSingle(@PathParam Long id) {
         return Fruit.findById(client, id)
             .onItem().transform(fruit -> fruit != null ? Response.ok(fruit) : Response.status(Status.NOT_FOUND))
-            .onItem().transform(Response.ResponseBuilder::build);
+            .onItem().transform(ResponseBuilder::build);
     }
 
     @POST
