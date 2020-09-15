@@ -42,7 +42,7 @@
             <dependency>
                 <groupId>io.projectreactor</groupId>
                 <artifactId>reactor-core</artifactId>
-                <version>3.3.9.RELEASE</version>
+                <version>3.3.10.RELEASE</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
             <dependency>
