@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>15</java.version>
         <resource.delimiter>@</resource.delimiter> <!-- delimiter that doesn't clash with Spring ${} placeholders -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
