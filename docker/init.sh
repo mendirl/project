@@ -56,6 +56,16 @@ cluster-config)
   docker-compose --compatibility -f monitoring/docker-compose-odfe-cluster.yml config
   exit $?;;
 
+spring-cloud-data-flow-start)
+  export DATAFLOW_VERSION=2.6.2
+  export SKIPPER_VERSION=2.5.2
+  docker-compose --compatibility -f spring-cloud-data-flow.yml up
+  exit $?;;
+
+spring-cloud-data-flow-stop)
+  docker-compose --compatibility -f spring-cloud-data-flow.yml down
+  exit $?;;
+
 *)
   echo "Usage: $0 {install|remove|prune|single-start|single-stop|single-config|cluster-start|cluster-stop|cluster-config}"; exit 1;
 esac
