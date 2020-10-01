@@ -17,6 +17,8 @@
         <module>reactive-simple</module>
         <module>reactive-crud</module>
         <module>kafka-quickstart</module>
+        <module>kafka-rest-client</module>
+
     </modules>
 
 </project>
