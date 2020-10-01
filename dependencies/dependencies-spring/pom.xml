@@ -16,6 +16,8 @@
     <packaging>pom</packaging>
 
     <properties>
+        <spring-boot.run.jvmArguments>--enable-preview</spring-boot.run.jvmArguments>
+
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <dockerfile.skip>true</dockerfile.skip>
         <jib.skip>true</jib.skip>
