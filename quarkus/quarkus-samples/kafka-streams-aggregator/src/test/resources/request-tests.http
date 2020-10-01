@@ -1,0 +1,15 @@
+###
+GET http://localhost:8080/weather-stations/data/1
+
+###
+GET http://localhost:8080/weather-stations/meta-data
+
+###
+GET http://localhost:8080/health
+
+###
+GET http://localhost:8080/health/live
+
+###
+GET http://localhost:8080/health/ready
+
