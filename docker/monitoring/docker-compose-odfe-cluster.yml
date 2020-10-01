@@ -1,7 +1,7 @@
 version: '3'
 services:
   odfe-master:
-    image: amazon/opendistro-for-elasticsearch:1.6.0
+    image: amazon/opendistro-for-elasticsearch:1.9.0
     container_name: odfe-master
     environment:
       - cluster.name=odfe-cluster
@@ -47,7 +47,7 @@ services:
       - 9600
 
   odfe-data1:
-    image: amazon/opendistro-for-elasticsearch:1.6.0
+    image: amazon/opendistro-for-elasticsearch:1.9.0
     container_name: odfe-data1
     environment:
       - cluster.name=odfe-cluster
@@ -81,7 +81,7 @@ services:
       - 9600
 
   odfe-data2:
-    image: amazon/opendistro-for-elasticsearch:1.6.0
+    image: amazon/opendistro-for-elasticsearch:1.9.0
     container_name: odfe-data2
     environment:
       - cluster.name=odfe-cluster
@@ -115,7 +115,7 @@ services:
       - 9600
 
   odfe-coordinating:
-    image: amazon/opendistro-for-elasticsearch:1.6.0
+    image: amazon/opendistro-for-elasticsearch:1.9.0
     container_name: odfe-coordinating
     environment:
       - cluster.name=odfe-cluster
@@ -149,7 +149,7 @@ services:
       - 9600:9600
 
   kibana:
-    image: amazon/opendistro-for-elasticsearch-kibana:1.6.0
+    image: amazon/opendistro-for-elasticsearch-kibana:1.9.0
     container_name: odfe-kibana
     environment:
       ELASTICSEARCH_HOSTS: https://odfe-coordinating:9200
@@ -165,7 +165,7 @@ services:
       - 5601:5601
 
   logstash:
-    image: docker.elastic.co/logstash/logstash-oss:7.6.2
+    image: docker.elastic.co/logstash/logstash-oss:7.8.1
     container_name: logstash
     deploy:
       resources:

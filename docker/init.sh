@@ -11,7 +11,6 @@ install)
   docker volume create odfe-single
   docker volume create odfe-coordinating
 
-  docker network create mendirl
   docker network create odfe-network-cluster
   docker network create odfe-network-single
   exit $?;;
@@ -23,7 +22,6 @@ remove)
   docker volume rm odfe-single
   docker volume rm odfe-coordinating
 
-  docker network rm mendirl
   docker network rm odfe-network-cluster
   docker network rm odfe-network-single
   exit $?;;

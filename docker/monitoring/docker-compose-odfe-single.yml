@@ -1,7 +1,7 @@
 version: '3'
 services:
   odfe-single:
-    image: amazon/opendistro-for-elasticsearch:1.6.0
+    image: amazon/opendistro-for-elasticsearch:1.9.0
     container_name: odfe-single
     environment:
       - node.name=odfe-single
@@ -37,7 +37,7 @@ services:
       - 9600:9600
 
   kibana:
-    image: amazon/opendistro-for-elasticsearch-kibana:1.6.0
+    image: amazon/opendistro-for-elasticsearch-kibana:1.9.0
     container_name: odfe-kibana
     environment:
       - ELASTICSEARCH_HOSTS=https://odfe-single:9200
@@ -55,7 +55,7 @@ services:
       - odfe-single
 
   logstash:
-    image: docker.elastic.co/logstash/logstash-oss:7.6.2
+    image: docker.elastic.co/logstash/logstash-oss:7.8.1
     container_name: logstash
     environment:
       - INPUT_TCP_PORT=5000
