@@ -79,7 +79,7 @@
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                         <target>${java.version}</target>
-                        <compilerArgs>--enable-preview</compilerArgs>
+<!--                        <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
                     </configuration>
                 </plugin>
                 <plugin>
@@ -88,7 +88,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
-                        <argLine>--enable-preview</argLine>
+                        <!--                        <argLine>&#45;&#45;enable-preview</argLine>-->
                     </configuration>
                 </plugin>
                 <plugin>
@@ -97,7 +97,7 @@
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${maven-failsafe-plugin.version}</version>
                     <configuration>
-                        <argLine>--enable-preview</argLine>
+                        <!--                        <argLine>&#45;&#45;enable-preview</argLine>-->
                     </configuration>
                 </plugin>
             </plugins>
