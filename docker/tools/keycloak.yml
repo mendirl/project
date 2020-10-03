@@ -25,7 +25,3 @@ services:
       - DB_USER:postgres
       - DB_PASSWORD:postgres
 
-networks:
-  default:
-    external:
-      name: mendirl

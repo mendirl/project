@@ -61,6 +61,8 @@ spring-cloud-data-flow-start)
   exit $?;;
 
 spring-cloud-data-flow-stop)
+  export DATAFLOW_VERSION=2.6.2
+  export SKIPPER_VERSION=2.5.2
   docker-compose --compatibility -f spring-cloud-data-flow.yml down
   exit $?;;
 
