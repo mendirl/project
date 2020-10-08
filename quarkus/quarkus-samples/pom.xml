@@ -20,6 +20,7 @@
         <module>kafka-rest-client</module>
         <module>kafka-streams-producer</module>
         <module>kafka-streams-aggregator</module>
+        <module>kafka-avro</module>
 
     </modules>
 
