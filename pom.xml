@@ -10,6 +10,12 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <!-- This is only the default for local development, CI will override it! -->
+        <revision>0.0.1-SNAPSHOT</revision>
+    </properties>
+
+
     <modules>
         <module>dependencies</module>
         <module>other</module>
