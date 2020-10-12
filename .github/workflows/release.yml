@@ -1,34 +1,32 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - release
-
-
+  push: { branches: release }
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+
     steps:
-      - name: Checkout project
+      - name: Checkout source code
         uses: actions/checkout@v2
+      - name: Set up JDK 15 for publishing to GitHub Packages
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+          server-id: github
       - name: Cache local Maven repository
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-maven-
-      - name: Setup Java JDK
-        uses: actions/setup-java@v1.4.2
-        with:
-          java-version: 15
-          server-id: github
-      - name: Configure Git user test
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Configure Git user
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
-      - name: Publish JAR
-        run: ./mvnw -B release:prepare release:perform
+      - name: Release to GitHub Packages
+        run: mvn -B release:prepare release:perform --file pom.xml
         env:
           MAVEN_OPTS: --enable-preview
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
