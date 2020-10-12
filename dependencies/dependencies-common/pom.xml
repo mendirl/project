@@ -36,6 +36,8 @@
         <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
         <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.avro/avro-maven-plugin -->
@@ -133,6 +135,15 @@
                             </configuration>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <!-- https://maven.apache.org/plugins/maven-deploy-plugin/ -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                    <configuration>
+                        <deployAtEnd>true</deployAtEnd>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <!-- https://maven.apache.org/plugins/maven-resources-plugin/ -->

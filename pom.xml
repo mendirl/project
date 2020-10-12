@@ -33,12 +33,14 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <!--    <scm>-->
-    <!--        <url>https://github.com/mendirl/project</url>-->
-    <!--        <connection>scm:git:git@github.com:mendirl/project.git</connection>-->
-    <!--        <developerConnection>scm:git:git@github.com:mendirl/project.git</developerConnection>-->
-    <!--        <tag>HEAD</tag>-->
-    <!--    </scm>-->
+    <scm>
+        <url>https://github.com/mendirl/jupiter</url>
+        <!-- read access -->
+        <connection>scm:git:git@github.com:mendirl/jupiter.git</connection>
+        <!-- write access -->
+        <developerConnection>scm:git:git@github.com:mendirl/jupiter.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <!--    <repositories>-->
     <!--        <repository>-->
@@ -55,7 +57,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/mendirl/hello-world</url>
+            <url>https://maven.pkg.github.com/mendirl/jupiter</url>
         </repository>
     </distributionManagement>
 

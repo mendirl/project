@@ -1,0 +1,27 @@
+name: Java CI
+
+on:
+  push: { branches: deploy }
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Set up JDK 15 for publishing to GitHub Packages
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Publish to GitHub Packages
+        run: mvn -B deploy --file pom.xml
+        env:
+          MAVEN_OPTS: --enable-preview
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
