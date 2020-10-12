@@ -40,9 +40,9 @@
     <scm>
         <url>https://github.com/mendirl/jupiter</url>
         <!-- read access -->
-        <connection>scm:git:git@github.com:mendirl/jupiter.git</connection>
+        <connection>scm:git:git@github.com/mendirl/jupiter.git</connection>
         <!-- write access -->
-        <developerConnection>scm:git:git@github.com:mendirl/jupiter.git</developerConnection>
+        <developerConnection>scm:git:git@github.com/mendirl/jupiter.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
