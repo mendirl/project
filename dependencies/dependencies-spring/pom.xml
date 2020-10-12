@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.mendirl</groupId>
         <artifactId>dependencies-common</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
         <relativePath>../dependencies-common</relativePath>
     </parent>
 
@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
 
     <properties>
-<!--        <spring-boot.run.jvmArguments>&#45;&#45;enable-preview</spring-boot.run.jvmArguments>-->
+        <!--        <spring-boot.run.jvmArguments>&#45;&#45;enable-preview</spring-boot.run.jvmArguments>-->
 
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <dockerfile.skip>true</dockerfile.skip>
@@ -42,34 +42,10 @@
         <!--        <hadoop-common.version>2.6.5</hadoop-common.version>-->
 
         <!-- maven plugins -->
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
-        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
-        <!-- https://mvnrepository.com/artifact/com.spotify/dockerfile-maven-plugin -->
-        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
-        <!-- https://mvnrepository.com/artifact/com.google.cloud.tools/jib-maven-plugin -->
-        <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
-        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
-
-        <!--        &lt;!&ndash; dependencies for maven plugins &ndash;&gt;-->
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.codehaus.mojo/flatten-maven-plugin &ndash;&gt;-->
-        <!--        <plexus-archiver.version>3.6.0</plexus-archiver.version>-->
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.codehaus.mojo/flatten-maven-plugin &ndash;&gt;-->
-        <!--        <javax.activation-api.version>1.2.0</javax.activation-api.version>-->
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>io.mendirl</groupId>
-                <artifactId>service-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <!--            <dependency>-->
-            <!--                <groupId>io.mendirl</groupId>-->
-            <!--                <artifactId>bigdata-common</artifactId>-->
-            <!--                <version>${project.version}</version>-->
-            <!--            </dependency>-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -123,17 +99,6 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven-resources-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <!-- https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/ -->
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${sonar-maven-plugin.version}</version>
-                </plugin>
-                <plugin>
                     <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/ -->
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -157,81 +122,6 @@
                             <configuration>
                                 <classifier>exec</classifier>
                             </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <!-- https://github.com/spotify/dockerfile-maven -->
-                    <groupId>com.spotify</groupId>
-                    <artifactId>dockerfile-maven-plugin</artifactId>
-                    <version>${dockerfile-maven-plugin.version}</version>
-                    <configuration>
-                        <repository>${project.build.finalName}</repository>
-                        <tag>latest</tag>
-                        <contextDirectory>${project.build.directory}</contextDirectory>
-                        <buildArgs>
-                            <JAR_FILE>${project.build.finalName}-exec.jar</JAR_FILE>
-                            <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-                            <APP_SLEEP>0</APP_SLEEP>
-                        </buildArgs>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>default</id>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <!-- https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin -->
-                    <groupId>com.google.cloud.tools</groupId>
-                    <artifactId>jib-maven-plugin</artifactId>
-                    <version>${jib-maven-plugin.version}</version>
-                    <configuration>
-                        <from>
-                            <image>adoptopenjdk:14-jdk-hotspot</image>
-                        </from>
-                        <to>
-                            <image>${project.build.finalName}</image>
-                            <tags>latest</tags>
-                        </to>
-                        <container>
-                            <entrypoint>
-                                <shell>bash</shell>
-                                <option>-c</option>
-                                <arg>/entrypoint.sh</arg>
-                            </entrypoint>
-                            <ports>
-                                <port>8081</port>
-                            </ports>
-                            <environment>
-                                <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-                                <JHIPSTER_SLEEP>0</JHIPSTER_SLEEP>
-                            </environment>
-                            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
-                        </container>
-                        <extraDirectories>
-                            <paths>src/main/docker</paths>
-                            <permissions>
-                                <permission>
-                                    <file>/entrypoint.sh</file>
-                                    <mode>755</mode>
-                                </permission>
-                                <permission>
-                                    <file>/app.conf</file>
-                                    <mode>644</mode>
-                                </permission>
-                            </permissions>
-                        </extraDirectories>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
                         </execution>
                     </executions>
                 </plugin>
@@ -274,38 +164,9 @@
                             </resources>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>docker-resources</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/docker/</directory>
-                                    <filtering>false</filtering>
-                                    <excludes>
-                                        <exclude>**/*.yml</exclude>
-                                    </excludes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>docker</id>
-            <properties>
-                <dockerfile.skip>false</dockerfile.skip>
-                <spring-boot.repackage.skip>false</spring-boot.repackage.skip>
-            </properties>
-        </profile>
-    </profiles>
 
 </project>
