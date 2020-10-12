@@ -4,7 +4,7 @@
 
     <groupId>io.mendirl</groupId>
     <artifactId>jupiter-parent</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -43,7 +43,7 @@
         <connection>scm:git:git@github.com:mendirl/jupiter.git</connection>
         <!-- write access -->
         <developerConnection>scm:git:git@github.com:mendirl/jupiter.git</developerConnection>
-        <tag>jupiter-parent-0.0.2</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <!--    <repositories>-->
