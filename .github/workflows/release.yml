@@ -30,4 +30,5 @@ jobs:
       - name: Publish JAR
         run: ./mvnw -B release:prepare release:perform
         env:
+          MAVEN_OPTS: --enable-preview
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
