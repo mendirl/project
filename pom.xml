@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -9,6 +8,12 @@
     <version>${revision}</version>
 
     <packaging>pom</packaging>
+
+    <properties>
+        <!-- This is only the default for local development, CI will override it! -->
+        <revision>0.0.1-SNAPSHOT</revision>
+    </properties>
+
 
     <modules>
         <module>dependencies</module>
@@ -33,12 +38,14 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <!--    <scm>-->
-    <!--        <url>https://github.com/mendirl/project</url>-->
-    <!--        <connection>scm:git:git@github.com:mendirl/project.git</connection>-->
-    <!--        <developerConnection>scm:git:git@github.com:mendirl/project.git</developerConnection>-->
-    <!--        <tag>HEAD</tag>-->
-    <!--    </scm>-->
+    <scm>
+        <url>https://github.com/mendirl/jupiter</url>
+        <!-- read access -->
+        <connection>scm:git:https://github.com/mendirl/jupiter.git</connection>
+        <!-- write access -->
+        <developerConnection>scm:git:https://github.com/mendirl/jupiter.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <!--    <repositories>-->
     <!--        <repository>-->
@@ -55,7 +62,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/mendirl/hello-world</url>
+            <url>https://maven.pkg.github.com/mendirl/jupiter</url>
         </repository>
     </distributionManagement>
 

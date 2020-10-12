@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>io.mendirl</groupId>
-        <artifactId>jupiter-parent</artifactId>
+        <artifactId>dependencies</artifactId>
         <version>${revision}</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>dependencies-common</artifactId>
@@ -36,6 +35,8 @@
         <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
         <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.avro/avro-maven-plugin -->
@@ -131,6 +132,41 @@
                                 <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
                                 <stringType>String</stringType>
                             </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <!-- https://maven.apache.org/plugins/maven-deploy-plugin/ -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                    <!--                    <configuration>-->
+                    <!--                        <deployAtEnd>true</deployAtEnd>-->
+                    <!--                    </configuration>-->
+                </plugin>
+                <plugin>
+                    <!-- https://www.mojohaus.org/flatten-maven-plugin/ -->
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>${flatten-maven-plugin.version}</version>
+                    <configuration>
+                        <updatePomFile>true</updatePomFile>
+                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>flatten</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>flatten.clean</id>
+                            <phase>clean</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
                         </execution>
                     </executions>
                 </plugin>
@@ -238,6 +274,12 @@
                 <!--                </plugin>-->
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
