@@ -29,4 +29,4 @@ jobs:
         run: mvn -B release:prepare release:perform --file pom.xml
         env:
           MAVEN_OPTS: --enable-preview
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
