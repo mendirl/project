@@ -5,9 +5,9 @@
 
     <parent>
         <groupId>io.mendirl</groupId>
-        <artifactId>jupiter-parent</artifactId>
+        <artifactId>dependencies</artifactId>
         <version>${revision}</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>dependencies-common</artifactId>
