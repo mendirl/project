@@ -6,7 +6,7 @@
 
     <groupId>io.mendirl</groupId>
     <artifactId>dependencies</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${revision}</version>
 
     <packaging>pom</packaging>
 

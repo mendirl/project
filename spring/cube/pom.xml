@@ -13,7 +13,7 @@
 
   <groupId>org.mendirl</groupId>
   <artifactId>service</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>${revision}</version>
   <packaging>pom</packaging>
 
   <modules>
