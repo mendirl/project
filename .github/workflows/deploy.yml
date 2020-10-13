@@ -21,7 +21,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Publish to GitHub Packages
-        run: mvn -B deploy --file pom.xml
+        run: mvn -B deploy
         env:
           MAVEN_OPTS: --enable-preview
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
