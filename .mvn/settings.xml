@@ -6,7 +6,7 @@
             <id>github</id>
             <username>local release process</username>
             <!-- <username>${env.GITHUB_ACTOR}</username> -->
-            <password>${env.GITHUB_TOKEN}</password>
+            <password>5269a464bdc70817b24d8970e777363fd5e418b4</password>
         </server>
         <server>
             <id>gpg.passphrase</id>
