@@ -46,17 +46,6 @@
         <tag>jupiter-parent-0.0.1</tag>
     </scm>
 
-    <!--    <repositories>-->
-    <!--        <repository>-->
-    <!--            <id>central</id>-->
-    <!--            <name>Maven Repository Switchboard</name>-->
-    <!--            <url>https://repo.maven.apache.org/maven2</url>-->
-    <!--            <snapshots>-->
-    <!--                <enabled>false</enabled>-->
-    <!--            </snapshots>-->
-    <!--        </repository>-->
-    <!--    </repositories>-->
-
     <distributionManagement>
         <repository>
             <id>github</id>
@@ -64,17 +53,6 @@
             <url>https://maven.pkg.github.com/mendirl/jupiter</url>
         </repository>
     </distributionManagement>
-
-    <!--    <distributionManagement>-->
-    <!--        <snapshotRepository>-->
-    <!--            <id>sonatype-nexus-snapshots</id>-->
-    <!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
-    <!--        </snapshotRepository>-->
-    <!--        <repository>-->
-    <!--            <id>sonatype-nexus-release</id>-->
-    <!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-    <!--        </repository>-->
-    <!--    </distributionManagement>-->
 
     <profiles>
         <!--        <profile>-->
