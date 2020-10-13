@@ -4,6 +4,7 @@
     <servers>
         <server>
             <id>github</id>
+<!--            <username>local release process</username>-->
             <username>${env.GITHUB_ACTOR}</username>
             <password>${env.GITHUB_TOKEN}</password>
         </server>
