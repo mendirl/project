@@ -13,7 +13,7 @@
 
     <groupId>org.mendirl</groupId>
     <artifactId>bigdata</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>

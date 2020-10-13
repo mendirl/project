@@ -5,7 +5,15 @@
 
 
 
-##### DEPLOY & RELEASE
+#### DEPLOY & RELEASE
 
 + https://github.com/marketplace/actions/setup-java-jdk
 + https://docs.github.com/en/free-pro-team@latest/actions/guides/publishing-java-packages-with-maven
+
+
+#### SOME ISSUES
+
+###### maven ci friendly
++ https://maven.apache.org/maven-ci-friendly.html
++ https://issues.apache.org/jira/browse/MRELEASE-935
++ https://issues.apache.org/jira/browse/MNG-6656
