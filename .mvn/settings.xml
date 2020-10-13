@@ -4,8 +4,13 @@
     <servers>
         <server>
             <id>github</id>
-            <username>${env.GITHUB_ACTOR}</username>
+            <username>local release process</username>
+            <!-- <username>${env.GITHUB_ACTOR}</username> -->
             <password>${env.GITHUB_TOKEN}</password>
+        </server>
+        <server>
+            <id>gpg.passphrase</id>
+            <passphrase>${env.GPG_PASSPHRASE}</passphrase>
         </server>
     </servers>
 </settings>
