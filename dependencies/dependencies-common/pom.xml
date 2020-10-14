@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -159,32 +160,6 @@
                     <!-- <deployAtEnd>true</deployAtEnd> -->
                     <!-- </configuration> -->
                 </plugin>
-                <plugin>
-                    <!-- https://www.mojohaus.org/flatten-maven-plugin/ -->
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>flatten-maven-plugin</artifactId>
-                    <version>${flatten-maven-plugin.version}</version>
-                    <configuration>
-                        <updatePomFile>true</updatePomFile>
-                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>flatten</id>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>flatten</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>flatten.clean</id>
-                            <phase>clean</phase>
-                            <goals>
-                                <goal>clean</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
                 <!-- https://maven.apache.org/plugins/maven-source-plugin/ -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -202,121 +177,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>${maven-resources-plugin.version}</version>
-                    <!--                    <executions>-->
-                    <!--                        <execution>-->
-                    <!--                            <id>docker-resources</id>-->
-                    <!--                            <phase>validate</phase>-->
-                    <!--                            <goals>-->
-                    <!--                                <goal>copy-resources</goal>-->
-                    <!--                            </goals>-->
-                    <!--                            <configuration>-->
-                    <!--                                <outputDirectory>target/</outputDirectory>-->
-                    <!--                                <resources>-->
-                    <!--                                    <resource>-->
-                    <!--                                        <directory>src/main/docker/</directory>-->
-                    <!--                                        <filtering>false</filtering>-->
-                    <!--                                        <excludes>-->
-                    <!--                                            <exclude>**/*.yml</exclude>-->
-                    <!--                                        </excludes>-->
-                    <!--                                    </resource>-->
-                    <!--                                </resources>-->
-                    <!--                            </configuration>-->
-                    <!--                        </execution>-->
-                    <!--                    </executions>-->
                 </plugin>
-                <!--                <plugin>-->
-                <!--                    &lt;!&ndash; https://github.com/spotify/dockerfile-maven &ndash;&gt;-->
-                <!--                    <groupId>com.spotify</groupId>-->
-                <!--                    <artifactId>dockerfile-maven-plugin</artifactId>-->
-                <!--                    <version>${dockerfile-maven-plugin.version}</version>-->
-                <!--                    <configuration>-->
-                <!--                        <repository>${project.build.finalName}</repository>-->
-                <!--                        <tag>latest</tag>-->
-                <!--                        <contextDirectory>${project.build.directory}</contextDirectory>-->
-                <!--                        <buildArgs>-->
-                <!--                            <JAR_FILE>${project.build.finalName}-exec.jar</JAR_FILE>-->
-                <!--                            <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>-->
-                <!--                            <APP_SLEEP>0</APP_SLEEP>-->
-                <!--                        </buildArgs>-->
-                <!--                    </configuration>-->
-                <!--                    <executions>-->
-                <!--                        <execution>-->
-                <!--                            <id>default</id>-->
-                <!--                            <goals>-->
-                <!--                                <goal>build</goal>-->
-                <!--                            </goals>-->
-                <!--                        </execution>-->
-                <!--                    </executions>-->
-                <!--                </plugin>-->
-                <!--                <plugin>-->
-                <!--                    &lt;!&ndash; https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin &ndash;&gt;-->
-                <!--                    <groupId>com.google.cloud.tools</groupId>-->
-                <!--                    <artifactId>jib-maven-plugin</artifactId>-->
-                <!--                    <version>${jib-maven-plugin.version}</version>-->
-                <!--                    <configuration>-->
-                <!--                        <from>-->
-                <!--                            <image>adoptopenjdk:14-jdk-hotspot</image>-->
-                <!--                        </from>-->
-                <!--                        <to>-->
-                <!--                            <image>${project.build.finalName}</image>-->
-                <!--                            <tags>latest</tags>-->
-                <!--                        </to>-->
-                <!--                        <container>-->
-                <!--                            <entrypoint>-->
-                <!--                                <shell>bash</shell>-->
-                <!--                                <option>-c</option>-->
-                <!--                                <arg>/entrypoint.sh</arg>-->
-                <!--                            </entrypoint>-->
-                <!--                            <ports>-->
-                <!--                                <port>8081</port>-->
-                <!--                            </ports>-->
-                <!--                            <environment>-->
-                <!--                                <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>-->
-                <!--                                <JHIPSTER_SLEEP>0</JHIPSTER_SLEEP>-->
-                <!--                            </environment>-->
-                <!--                            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>-->
-                <!--                        </container>-->
-                <!--                        <extraDirectories>-->
-                <!--                            <paths>src/main/docker</paths>-->
-                <!--                            <permissions>-->
-                <!--                                <permission>-->
-                <!--                                    <file>/entrypoint.sh</file>-->
-                <!--                                    <mode>755</mode>-->
-                <!--                                </permission>-->
-                <!--                                <permission>-->
-                <!--                                    <file>/app.conf</file>-->
-                <!--                                    <mode>644</mode>-->
-                <!--                                </permission>-->
-                <!--                            </permissions>-->
-                <!--                        </extraDirectories>-->
-                <!--                    </configuration>-->
-                <!--                    <executions>-->
-                <!--                        <execution>-->
-                <!--                            <phase>package</phase>-->
-                <!--                            <goals>-->
-                <!--                                <goal>build</goal>-->
-                <!--                            </goals>-->
-                <!--                        </execution>-->
-                <!--                    </executions>-->
-                <!--                </plugin>-->
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
     </build>
-
-    <profiles>
-        <!--        <profile>-->
-        <!--            <id>docker</id>-->
-        <!--            <properties>-->
-        <!--                <dockerfile.skip>false</dockerfile.skip>-->
-        <!--                <spring-boot.repackage.skip>false</spring-boot.repackage.skip>-->
-        <!--            </properties>-->
-        <!--        </profile>-->
-    </profiles>
 
 </project>

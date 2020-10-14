@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -14,11 +15,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <!--        <spring-boot.run.jvmArguments>&#45;&#45;enable-preview</spring-boot.run.jvmArguments>-->
-
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-        <dockerfile.skip>true</dockerfile.skip>
-        <jib.skip>true</jib.skip>
+        <spring-boot.build-image.skip>true</spring-boot.build-image.skip>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
@@ -29,17 +26,14 @@
         <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
-        <!--        <jaxb.version>2.3.2</jaxb.version>-->
-
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.spark/spark-sql &ndash;&gt;-->
-        <!--        <spark.version>2.3.0</spark.version>-->
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.parquet/parquet-avro &ndash;&gt;-->
-        <!--        <parquet.version>1.8.2</parquet.version>-->
-        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common &ndash;&gt;-->
-        <!--        <hadoop-common.version>2.6.5</hadoop-common.version>-->
-
-        <!-- maven plugins -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
+        <!-- <jaxb.version>2.3.2</jaxb.version>-->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.spark/spark-sql &ndash;&gt;-->
+        <!-- <spark.version>2.3.0</spark.version>-->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.parquet/parquet-avro &ndash;&gt;-->
+        <!-- <parquet.version>1.8.2</parquet.version>-->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common &ndash;&gt;-->
+        <!-- <hadoop-common.version>2.6.5</hadoop-common.version>-->
     </properties>
 
     <dependencyManagement>
@@ -101,24 +95,18 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
-                    <configuration>
-                        <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#goals-repackage-parameters-details-executable -->
-                        <executable>true</executable>
-                    </configuration>
                     <executions>
                         <execution>
                             <goals>
                                 <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#goals-build-info -->
                                 <goal>build-info</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>repackage</id>
-                            <goals>
-                                <goal>repackage</goal>
+                                <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image -->
+                                <goal>build-image</goal>
                             </goals>
                             <configuration>
-                                <classifier>exec</classifier>
+                                <image>
+                                    <name>${project.groupId}/jupiter/${project.artifactId}:${project.version}</name>
+                                </image>
                             </configuration>
                         </execution>
                     </executions>
@@ -166,5 +154,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>docker</id>
+            <properties>
+                <spring-boot.build-image.skip>false</spring-boot.build-image.skip>
+            </properties>
+        </profile>
+        <profile>
+            <id>native</id>
+        </profile>
+    </profiles>
 
 </project>
