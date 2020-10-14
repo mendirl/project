@@ -103,11 +103,6 @@
                                 <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image -->
                                 <goal>build-image</goal>
                             </goals>
-                            <configuration>
-                                <image>
-                                    <name>${project.groupId}/jupiter/${project.artifactId}:${project.version}</name>
-                                </image>
-                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
@@ -160,6 +155,9 @@
             <id>docker</id>
             <properties>
                 <spring-boot.build-image.skip>false</spring-boot.build-image.skip>
+                <spring-boot.build-image.imageName>
+                    ${project.groupId}/jupiter/${project.artifactId}:${project.version
+                </spring-boot.build-image.imageName>
             </properties>
         </profile>
         <profile>
