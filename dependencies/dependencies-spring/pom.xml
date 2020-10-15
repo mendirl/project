@@ -156,7 +156,7 @@
             <properties>
                 <spring-boot.build-image.skip>false</spring-boot.build-image.skip>
                 <spring-boot.build-image.imageName>
-                    ${project.groupId}/jupiter/${project.artifactId}:${project.version
+                    ${project.groupId}/jupiter/${project.artifactId}:${project.version}
                 </spring-boot.build-image.imageName>
             </properties>
         </profile>
