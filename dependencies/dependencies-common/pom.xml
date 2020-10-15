@@ -42,8 +42,6 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
-        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.apache.avro/avro-maven-plugin -->
         <avro-maven-plugin.plugin>1.10.0</avro-maven-plugin.plugin>
         <!-- https://mvnrepository.com/artifact/com.spotify/dockerfile-maven-plugin -->
@@ -114,12 +112,6 @@
                     <configuration>
                         <argLine>--enable-preview</argLine>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <!-- https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/ -->
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${sonar-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <!-- https://avro.apache.org/docs/current/gettingstartedjava.html -->

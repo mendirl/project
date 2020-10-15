@@ -16,6 +16,12 @@
         <module>other</module>
     </modules>
 
+    <properties>
+        <sonar.projectKey>mendirl_jupiter</sonar.projectKey>
+        <sonar.organization>mendirl-github</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
+
     <repositories>
         <repository>
             <id>spring-milestones</id>
