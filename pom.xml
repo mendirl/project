@@ -16,12 +16,6 @@
         <module>other</module>
     </modules>
 
-    <properties>
-        <!-- <sonar.projectKey>mendirl_jupiter</sonar.projectKey> -->
-        <sonar.organization>mendirl-github</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    </properties>
-
     <repositories>
         <repository>
             <id>spring-milestones</id>
@@ -54,6 +48,45 @@
         </repository>
     </distributionManagement>
 
+
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <properties>
+                <sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
+                <sonar.organization>mendirl-github</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+                            <!-- https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/ -->
+                            <groupId>org.sonarsource.scanner.maven</groupId>
+                            <artifactId>sonar-maven-plugin</artifactId>
+                            <version>3.7.0.1746</version>
+                            <executions>
+                                <execution>
+                                    <id>sonar</id>
+                                    <phase>verify</phase>
+                                    <goals>
+                                        <goal>sonar</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <!--    <profiles>-->
     <!--        <profile>-->
