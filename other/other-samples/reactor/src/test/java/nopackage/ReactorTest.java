@@ -131,9 +131,20 @@ public class ReactorTest {
         var elements = new ArrayList<Integer>();
 
         Flux.just(1, 2, 3, 4)
-                .log()
-                .map(i -> i * 2)
-                .subscribeOn(Schedulers.parallel())
-                .subscribe(elements::add);
+            .log()
+            .map(i -> i * 2)
+            .subscribeOn(Schedulers.parallel())
+            .subscribe(elements::add);
+    }
+
+    @Test
+    public void test8() {
+        var elements = new ArrayList<Integer>();
+
+        Flux.just(1, 2, 3, 4)
+            .log()
+            .map(i -> i * 2)
+            .subscribeOn(Schedulers.parallel())
+            .subscribe(elements::add);
     }
 }
