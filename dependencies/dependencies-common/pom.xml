@@ -23,35 +23,8 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
-        <!-- maven plugins -->
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-failsafe-plugin -->
-        <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/flatten-maven-plugin -->
-        <flatten-maven-plugin.version>1.2.5</flatten-maven-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
-        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
-        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-release-plugin -->
-        <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
-        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.avro/avro-maven-plugin -->
-        <avro-maven-plugin.plugin>1.10.0</avro-maven-plugin.plugin>
-        <!-- https://mvnrepository.com/artifact/com.spotify/dockerfile-maven-plugin -->
-        <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
-        <!-- https://mvnrepository.com/artifact/com.google.cloud.tools/jib-maven-plugin -->
-        <jib-maven-plugin.version>2.6.0</jib-maven-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
-        <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
-        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
+        <!-- for surefire and plugins and jacoco https://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html -->
+        <argLine>--enable-preview</argLine>
     </properties>
 
     <dependencyManagement>
@@ -89,10 +62,11 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
                     <!-- https://maven.apache.org/plugins/maven-compiler-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
+                    <version>3.8.1</version>
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
@@ -100,28 +74,25 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
                     <!-- https://maven.apache.org/surefire/maven-surefire-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                    <configuration>
-                        <argLine>${argLine} --enable-preview</argLine>
-                    </configuration>
+                    <version>3.0.0-M5</version>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-failsafe-plugin -->
                     <!-- https://maven.apache.org/surefire/maven-failsafe-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${maven-failsafe-plugin.version}</version>
-                    <configuration>
-                        <argLine>${argLine} --enable-preview</argLine>
-                    </configuration>
+                    <version>3.0.0-M5</version>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.avro/avro-maven-plugin -->
                     <!-- https://avro.apache.org/docs/current/gettingstartedjava.html -->
                     <groupId>org.apache.avro</groupId>
                     <artifactId>avro-maven-plugin</artifactId>
-                    <version>${avro-maven-plugin.plugin}</version>
+                    <version>1.10.0</version>
                     <executions>
                         <execution>
                             <phase>generate-sources</phase>
@@ -137,10 +108,11 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-release-plugin -->
                     <!-- https://maven.apache.org/plugins/maven-release-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>${maven-release-plugin.version}</version>
+                    <version>3.0.0-M1</version>
                     <configuration>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
@@ -148,20 +120,22 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-deploy-plugin -->
                     <!-- https://maven.apache.org/plugins/maven-deploy-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven-deploy-plugin.version}</version>
+                    <version>3.0.0-M1</version>
                     <!-- doesn't work bc maven-deploy-plugin is not defined at root level -->
                     <!-- <configuration> -->
                     <!-- <deployAtEnd>true</deployAtEnd> -->
                     <!-- </configuration> -->
                 </plugin>
-                <!-- https://maven.apache.org/plugins/maven-source-plugin/ -->
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
+                    <!-- https://maven.apache.org/plugins/maven-source-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>${maven-source-plugin.version}</version>
+                    <version>3.2.1</version>
                     <executions>
                         <execution>
                             <id>attach-sources</id>
@@ -171,11 +145,12 @@
                         </execution>
                     </executions>
                 </plugin>
-                <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+                    <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin.version}</version>
+                    <version>3.2.0</version>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>
@@ -186,16 +161,18 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
                     <!-- https://maven.apache.org/plugins/maven-resources-plugin/ -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven-resources-plugin.version}</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
                     <!-- https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/ -->
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${sonar-maven-plugin.version}</version>
+                    <version>3.7.0.1746</version>
                     <executions>
                         <execution>
                             <id>sonar</id>
@@ -207,10 +184,11 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
                     <!-- https://www.eclemma.org/jacoco/trunk/doc/maven.html -->
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>${jacoco-maven-plugin.version}</version>
+                    <version>0.8.6</version>
                     <executions>
                         <execution>
                             <id>prepare-agent</id>

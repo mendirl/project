@@ -1,4 +1,4 @@
-name: Sonar
+name: Quality
 
 on:
   push: { branches: main }
