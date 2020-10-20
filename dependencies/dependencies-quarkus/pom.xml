@@ -86,7 +86,7 @@
             <properties>
                 <quarkus.container-image.build>true</quarkus.container-image.build>
                 <quarkus.container-image.registry>${docker.registry.url}</quarkus.container-image.registry>
-                <quarkus.container-image.group>${docker.repository}</quarkus.container-image.group>
+                <quarkus.container-image.group>${docker.owner}/${docker.repository}</quarkus.container-image.group>
                 <quarkus.container-image.name>${docker.image.name}</quarkus.container-image.name>
                 <quarkus.container-image.tag>${docker.image.version}</quarkus.container-image.tag>
             </properties>
@@ -105,7 +105,7 @@
                 <quarkus.container-image.registry>${docker.registry.url}</quarkus.container-image.registry>
                 <quarkus.container-image.username>${docker.registry.username}</quarkus.container-image.username>
                 <quarkus.container-image.password>${docker.registry.password}</quarkus.container-image.password>
-                <quarkus.container-image.group>${docker.repository}</quarkus.container-image.group>
+                <quarkus.container-image.group>${docker.owner}/${docker.repository}</quarkus.container-image.group>
                 <quarkus.container-image.name>${docker.image.name}</quarkus.container-image.name>
                 <quarkus.container-image.tag>${docker.image.version}</quarkus.container-image.tag>
             </properties>
