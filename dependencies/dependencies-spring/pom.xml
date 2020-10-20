@@ -156,9 +156,38 @@
             <properties>
                 <spring-boot.build-image.skip>false</spring-boot.build-image.skip>
                 <spring-boot.build-image.imageName>
-                    ${project.groupId}/jupiter/${project.artifactId}:${project.version}
+                    ${docker.registry.url}/${docker.owner}/${docker.repository}/${docker.image.name}:${docker.image.version}
                 </spring-boot.build-image.imageName>
             </properties>
+        </profile>
+        <profile>
+            <id>dockerPush</id>
+            <properties>
+                <spring-boot.build-image.skip>false</spring-boot.build-image.skip>
+                <spring-boot.build-image.publish>true</spring-boot.build-image.publish>
+                <spring-boot.build-image.imageName>
+                    ${docker.registry.url}/${docker.owner}/${docker.repository}/${docker.image.name}:${docker.image.version}
+                </spring-boot.build-image.imageName>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-maven-plugin</artifactId>
+                            <configuration>
+                                <docker>
+                                    <publishRegistry>
+                                        <url>${docker.registry.url}</url>
+                                        <username>${docker.registry.username}</username>
+                                        <password>${docker.registry.password}</password>
+                                    </publishRegistry>
+                                </docker>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
         </profile>
         <profile>
             <id>native</id>

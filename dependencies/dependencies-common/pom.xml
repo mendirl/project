@@ -23,7 +23,15 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
-        <!-- for surefire and plugins and jacoco https://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html -->
+        <docker.registry.url>docker.pkg.github.com</docker.registry.url>
+        <docker.registry.username>${env.REGISTRY_USERNAME}</docker.registry.username>
+        <docker.registry.password>${env.REGISTRY_PASSWORD}</docker.registry.password>
+        <docker.owner>mendirl</docker.owner>
+        <docker.repository>jupiter</docker.repository>
+        <docker.image.name>${project.artifactId}</docker.image.name>
+        <docker.image.version>${project.version}</docker.image.version>
+
+        <!-- for surefire and failsafe plugins combine with jacoco https://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html -->
         <argLine>--enable-preview</argLine>
     </properties>
 
