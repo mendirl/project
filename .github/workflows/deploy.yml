@@ -23,7 +23,7 @@ jobs:
       - name: Build and Publish to GitHub Packages
         run: mvn -B deploy -PdockerPush
         env:
-          MAVEN_OPTS: --enable-preview
+          # MAVEN_OPTS: --enable-preview
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REGISTRY_USERNAME: ${{ github.actor }}
           REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}

@@ -31,7 +31,7 @@
         <docker.image.version>${project.version}</docker.image.version>
 
         <!-- for surefire and failsafe plugins combine with jacoco https://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html -->
-        <argLine>--enable-preview</argLine>
+        <!-- <argLine>&#45;&#45;enable-preview</argLine> -->
     </properties>
 
     <dependencyManagement>
@@ -77,7 +77,7 @@
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
-                        <compilerArgs>--enable-preview</compilerArgs>
+                        <!-- <compilerArgs>&#45;&#45;enable-preview</compilerArgs> -->
                     </configuration>
                 </plugin>
                 <plugin>
