@@ -31,6 +31,6 @@ jobs:
       - name: Build and Analyze
         run: mvn -B verify -Pquality
         env:
-          MAVEN_OPTS: --enable-preview
+          # MAVEN_OPTS: --enable-preview
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
