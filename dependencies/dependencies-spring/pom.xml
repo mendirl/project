@@ -26,6 +26,8 @@
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-webflux-ui -->
+        <springdoc-openapi-webflux-ui.version>1.5.0</springdoc-openapi-webflux-ui.version>
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
         <!-- <jaxb.version>2.3.2</jaxb.version>-->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.spark/spark-sql &ndash;&gt;-->
@@ -65,9 +67,9 @@
                 <version>${springfox-swagger2.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${springfox-swagger2.version}</version>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${springdoc-openapi-webflux-ui.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -195,6 +197,57 @@
                     ${docker.registry.url}/${docker.owner}/${docker.repository}/${docker.image.name}:${docker.image.version}
                 </spring-boot.build-image.imageName>
             </properties>
+        </profile>
+        <profile>
+            <id>native</id>
+            <!-- TODO: to test -->
+
+            <!-- need this dep and one of the following plugins block -->
+            <!--            <dependency>-->
+            <!--                <groupId>org.springframework.experimental</groupId>-->
+            <!--                <artifactId>spring-graalvm-native</artifactId>-->
+            <!--                <version>0.8.2-SNAPSHOT</version>-->
+            <!--            </dependency>-->
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <image>
+                                <builder>paketobuildpacks/builder:tiny</builder>
+                                <env>
+                                    <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
+                                </env>
+                            </image>
+                        </configuration>
+                    </plugin>
+                    <!-- or this -->
+                    <plugin>
+                        <groupId>org.graalvm.nativeimage</groupId>
+                        <artifactId>native-image-maven-plugin</artifactId>
+                        <version>20.2.0</version>
+                        <configuration>
+                            <mainClass>
+                                wag.WagApplication
+                            </mainClass>
+                            <imageName>${project.artifactId}</imageName>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>native-image</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>dockerPush</id>
