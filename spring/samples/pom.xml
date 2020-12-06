@@ -12,6 +12,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>reactive-http</module>
+        <module>reactive-client</module>
     </modules>
 
 </project>
