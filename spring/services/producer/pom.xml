@@ -5,17 +5,10 @@
 
     <parent>
         <groupId>io.mendirl</groupId>
-        <artifactId>dependencies-spring</artifactId>
+        <artifactId>spring-services</artifactId>
         <version>1.4.0-SNAPSHOT</version>
-        <relativePath>../dependencies/dependencies-spring</relativePath>
     </parent>
 
-    <artifactId>spring</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>samples</module>
-        <module>services</module>
-    </modules>
+    <artifactId>spring-producer</artifactId>
 
 </project>
