@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    consul:
+      enabled: false
+      config:
+        enabled: false
+
+---
+
+spring.profiles: cloud
+spring:
+  cloud:
+    consul:
+      enabled: true
+      config:
+        enabled: true

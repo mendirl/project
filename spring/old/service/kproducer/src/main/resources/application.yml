@@ -1,0 +1,29 @@
+debug: false
+
+server:
+  port: 8383
+  servlet:
+    context-path: /kproducer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /management
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+spring:
+  application:
+    name: kproducer
+  cloud:
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        serviceName: ${spring.application.name}
+        health-check-path: ${server.servlet.context-path}${management.endpoints.web.base-path}/health
+        tags:
+          - management.context-path=${server.servlet.context-path}${management.endpoints.web.base-path}
+          - health.path=health
