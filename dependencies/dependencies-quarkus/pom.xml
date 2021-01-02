@@ -18,6 +18,9 @@
         <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-universe-bom -->
         <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-maven-plugin -->
         <quarkus.version>1.10.5.Final</quarkus.version>
+        <kotlin.version>1.3.72</kotlin.version>
+        <!-- TODO: should be change to 1.4.xx with quarkus 1.11 -->
+        <!-- <kotlin.version>1.4.21</kotlin.version> -->
     </properties>
 
     <dependencyManagement>
@@ -55,6 +58,51 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <!-- https://kotlinlang.org/docs/reference/using-maven.html -->
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <jvmTarget>13</jvmTarget>
+                        <!-- TODO: with quarkus 11 -->
+                        <!-- <jvmTarget>${java.version}</jvmTarget> -->
+                        <javaParameters>true</javaParameters>
+                        <args>
+                            <arg>-Xjsr305=strict</arg>
+                        </args>
+                        <compilerPlugins>
+                            <plugin>all-open</plugin>
+                        </compilerPlugins>
+                        <pluginOptions>
+                            <!-- Each annotation is placed on its own line -->
+                            <option>all-open:annotation=javax.ws.rs.Path</option>
+                            <option>all-open:annotation=javax.enterprise.context.ApplicationScoped</option>
+                            <option>all-open:annotation=io.quarkus.test.junit.QuarkusTest</option>
+                        </pluginOptions>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jetbrains.kotlin</groupId>
+                            <artifactId>kotlin-maven-allopen</artifactId>
+                            <version>${kotlin.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

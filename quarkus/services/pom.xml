@@ -17,6 +17,7 @@
         <module>server</module>
         <module>producer</module>
         <module>consumer</module>
+        <module>kotlin</module>
     </modules>
 
 </project>
