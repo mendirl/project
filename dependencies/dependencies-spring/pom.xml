@@ -278,9 +278,6 @@
                 </pluginManagement>
             </build>
         </profile>
-        <profile>
-            <id>native</id>
-        </profile>
     </profiles>
 
 </project>
