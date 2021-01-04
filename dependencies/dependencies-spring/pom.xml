@@ -27,7 +27,7 @@
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-webflux-ui -->
-        <springdoc-openapi-webflux-ui.version>1.5.0</springdoc-openapi-webflux-ui.version>
+        <springdoc-openapi-webflux-ui.version>1.5.2</springdoc-openapi-webflux-ui.version>
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
         <!-- <jaxb.version>2.3.2</jaxb.version>-->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.spark/spark-sql &ndash;&gt;-->
