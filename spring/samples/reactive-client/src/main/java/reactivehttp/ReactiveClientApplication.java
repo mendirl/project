@@ -7,9 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -39,8 +36,8 @@ class OnStartUp {
     public void ready() {
         var executor = Executors.newFixedThreadPool(3);
 
-//        executor.submit(this::httpClienBlockingCalls);
-//        executor.submit(this::webClientCalls);
+        executor.submit(this::httpClienBlockingCalls);
+        executor.submit(this::webClientCalls);
         executor.submit(this::httpClientCalls);
 
         executor.awaitTermination(10, TimeUnit.SECONDS);
@@ -64,15 +61,16 @@ class OnStartUp {
 //            .bodyToFlux(ServerSentEvent.class)
 //            .subscribe(content -> log.info("WebClient infinity flux with accept sse: {}", content.data()));
 
-//        WebClient infinity flux: {"message":"Hello fabien flux sse @ 2020-11-25T21:24:02.615021700Z"} == String
-//        WebClient infinity flux: {message=Hello fabien flux sse @ 2020-11-25T21:25:16.333904700Z} == SSE.data()
-        webClient.get()
-            .uri("/greetingsinfinityfluxassse")
-            .retrieve()
-            .bodyToFlux(ServerSentEvent.class)
-            .subscribe(content -> log.info("WebClient infinity flux: {}", content.data()));
+//        WebClient infinity flux: {"message":"Hello fabien flux sse @ 2020-11-25T21:24:02.615021700Z"} ==> body == String
+//        WebClient infinity flux: {message=Hello fabien flux sse @ 2020-11-25T21:25:16.333904700Z} ==> body == SSE.data()
+//        webClient.get()
+//            .uri("/greetingsinfinityfluxassse")
+//            .retrieve()
+//            .bodyToFlux(ServerSentEvent.class)
+//            .subscribe(content -> log.info("WebClient infinity flux: {}", content.data()));
 
-
+//        WebClient infinity flux with accept sse: {"message":"Hello fabien flux sse @ 2020-11-25T21:24:02.615021700Z"} ==> body == String
+//        WebClient infinity flux with accept sse: {message=Hello fabien flux sse @ 2020-11-25T21:25:16.333904700Z} ==> body == SSE.data()
 //        webClient.get()
 //            .uri("/greetingsinfinityfluxassse")
 //            .accept(MediaType.TEXT_EVENT_STREAM)
@@ -80,6 +78,7 @@ class OnStartUp {
 //            .bodyToFlux(ServerSentEvent.class)
 //            .subscribe(content -> log.info("WebClient infinity flux sse with accept sse: {}", content.data()));
 
+//        WebClient infinity flux see with accept json: {message=Hello fabien flux sse @ 2021-01-03T20:33:46.687596500Z} ==> body == SSE.data()
 //        webClient.get()
 //            .uri("/greetingsinfinityfluxassse")
 //            .accept(MediaType.APPLICATION_JSON)
@@ -87,13 +86,12 @@ class OnStartUp {
 //            .bodyToFlux(ServerSentEvent.class)
 //            .subscribe(content -> log.info("WebClient infinity flux see with accept json: {}", content.data()));
 //
-//
 //        webClient.get()
 //            .uri("/greetingsonemono")
 //            .retrieve()
 //            .bodyToFlux(String.class)
 //            .subscribe(content -> log.info("WebClient one mono: {}", content));
-//
+
 //        webClient.get()
 //            .uri("/greetingsoneflux")
 //            .retrieve()
@@ -130,15 +128,15 @@ class OnStartUp {
 //        var response5 = httpClient.send(request5, HttpResponse.BodyHandlers.ofString());
 //        log.info("HttpClient block infinity flux sse with accept json:" + response5.body());
 
-        var request6 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsonemono"))
-            .GET().build();
-        var response6 = httpClient.send(request6, HttpResponse.BodyHandlers.ofString());
-        log.info("HttpClient block one mono:" + response6.body());
-
-        var request7 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsoneflux"))
-            .GET().build();
-        var response7 = httpClient.send(request7, HttpResponse.BodyHandlers.ofString());
-        log.info("HttpClient block one flux:" + response7.body());
+//        var request6 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsonemono"))
+//            .GET().build();
+//        var response6 = httpClient.send(request6, HttpResponse.BodyHandlers.ofString());
+//        log.info("HttpClient block one mono:" + response6.body());
+//
+//        var request7 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsoneflux"))
+//            .GET().build();
+//        var response7 = httpClient.send(request7, HttpResponse.BodyHandlers.ofString());
+//        log.info("HttpClient block one flux:" + response7.body());
     }
 
     @SneakyThrows
@@ -147,8 +145,8 @@ class OnStartUp {
 
 //        var request1 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsinfinityflux"))
 //            .GET().build();
-//        var response1 = httpClient.sendAsync(request1, HttpResponse.BodyHandlers.ofString());
-//        response1.thenAccept(response -> log.info("HttpClient reactive infinity flux:" + response.body()));
+//        httpClient.sendAsync(request1, HttpResponse.BodyHandlers.ofString())
+//            .thenAccept(response -> log.info("HttpClient reactive infinity flux:" + response.body()));
 
 //        var request2 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsinfinityflux"))
 //            .GET().header(HttpHeaders.ACCEPT, MediaType.TEXT_EVENT_STREAM_VALUE).build();
@@ -160,32 +158,34 @@ class OnStartUp {
 //        var response3 = httpClient.sendAsync(request3, HttpResponse.BodyHandlers.ofString());
 //        response3.thenAccept(response -> log.info("HttpClient reactive infinity flux sse:" + response.body()));
 
-        var request4 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsinfinityfluxassse"))
-            .GET()
-            .header(HttpHeaders.ACCEPT, MediaType.TEXT_EVENT_STREAM_VALUE)
-            .build();
-        httpClient
-            .sendAsync(request4, HttpResponse.BodyHandlers.ofString())
-            .thenApply(stringHttpResponse -> {
-                log.info("HttpClient reactive infinity flux sse with accept sse:" + stringHttpResponse);
-                return stringHttpResponse;
-            })
-            .thenAccept(response -> log.info("HttpClient reactive infinity flux sse with accept sse:" + response.body()));
+//        var request4 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsinfinityfluxassse"))
+//            .GET()
+//            .header(HttpHeaders.ACCEPT, MediaType.TEXT_EVENT_STREAM_VALUE)
+//            .build();
+//        httpClient
+//            .sendAsync(request4, HttpResponse.BodyHandlers.ofString())
+//            .thenAccept(response -> log.info("HttpClient reactive infinity flux sse with accept sse:" + response.body()));
 
-//        var request5 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsinfinityfluxassse"))
-//            .GET().header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE).build();
-//        var response5 = httpClient.sendAsync(request5, HttpResponse.BodyHandlers.ofString());
-//        response5.thenAccept(response -> log.info("HttpClient reactive infinity flux sse with accept json:" + response.body()));
+//        var request5 = HttpRequest
+//            .newBuilder(URI.create("http://localhost:8080/greetingsinfinityfluxassse"))
+//            .GET()
+//            .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+//            .build();
+//        httpClient
+//            .sendAsync(request5, HttpResponse.BodyHandlers.ofString())
+//            .thenAccept(response -> log.info("HttpClient reactive infinity flux sse with accept json:" + response.body()));
 
 //        var request6 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsonemono"))
 //            .GET().build();
-//        var response6 = httpClient.sendAsync(request6, HttpResponse.BodyHandlers.ofString());
-//        response6.thenAccept(response -> log.info("HttpClient reactive one mono:" + response.body()));
+//        httpClient
+//            .sendAsync(request6, HttpResponse.BodyHandlers.ofString())
+//            .thenAccept(response -> log.info("HttpClient reactive one mono:" + response.body()));
 
 //        var request7 = HttpRequest.newBuilder(URI.create("http://localhost:8080/greetingsoneflux"))
 //            .GET().build();
-//        var response7 = httpClient.sendAsync(request7, HttpResponse.BodyHandlers.ofString());
-//        response7.thenAccept(response -> log.info("HttpClient reactive one flux:" + response.body()));
+//        httpClient
+//            .sendAsync(request7, HttpResponse.BodyHandlers.ofString())
+//            .thenAccept(response -> log.info("HttpClient reactive one flux:" + response.body()));
     }
 
 }
