@@ -1,2 +1,21 @@
 server:
   port: 8081
+
+
+eco2mix:
+  url: https://eco2mix.rte-france.com/
+  energie:
+    path_year: download/eco2mix/eCO2mix_RTE_energie_A.zip
+    path_month: download/eco2mix/eCO2mix_RTE_energie_M.zip
+  puissance:
+    path_day: curves/eco2mixDl?date=04/01/2021
+
+
+logging:
+  level:
+    root: INFO
+    web: DEBUG
+
+spring:
+  mvc.log-request-details: true
+  output.ansi.enabled: DETECT

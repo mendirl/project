@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -102,11 +103,21 @@
                             <goals>
                                 <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#goals-build-info -->
                                 <goal>build-info</goal>
+                                <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/#goals-repackage -->
+                                <goal>repackage</goal>
                                 <!-- https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image -->
                                 <goal>build-image</goal>
                             </goals>
                         </execution>
                     </executions>
+                    <!--                    <configuration>-->
+                    <!--                        <excludes>-->
+                    <!--                            <exclude>-->
+                    <!--                                <groupId>org.springframework.boot</groupId>-->
+                    <!--                                <artifactId>spring-boot-configuration-processor</artifactId>-->
+                    <!--                            </exclude>-->
+                    <!--                        </excludes>-->
+                    <!--                    </configuration>-->
                 </plugin>
                 <plugin>
                     <!-- https://kotlinlang.org/docs/reference/using-maven.html -->
