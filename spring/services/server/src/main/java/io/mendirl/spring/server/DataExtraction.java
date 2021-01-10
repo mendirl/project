@@ -25,7 +25,7 @@ public class DataExtraction<T> {
     public List<T> extract(DataBuffer dataBuffer, Class<T> clazz) {
         log.info("lets go to extract data");
         try {
-            return convertData(unzip(persistResponse(dataBuffer)), clazz);
+            return convertData(unzip(dataBuffer), clazz);
         } catch (IOException e) {
             log.error("impossible to extract data", e);
         }
@@ -62,23 +62,10 @@ public class DataExtraction<T> {
         return Files.createTempDirectory("eco2mix-");
     }
 
-    private Path createTemporaryCsvFile() throws IOException {
-        return Files.createTempFile("eco2mix-", ".csv");
-    }
-
-    private Path persistResponse(DataBuffer dataBuffer) throws IOException {
-        var path = createTemporaryDownloadedFile();
-        try (var out = Files.newOutputStream(path)) {
-            StreamUtils.copy(dataBuffer.asInputStream(), out);
-        }
-
-        return path;
-    }
-
-    private Path unzip(Path path) throws IOException {
+    private Path unzip(DataBuffer dataBuffer) throws IOException {
         var temporaryExcelFolder = createTemporaryExcelFolder();
 
-        try (var fis = Files.newInputStream(path);
+        try (var fis = dataBuffer.asInputStream();
              var bis = new BufferedInputStream(fis);
              var stream = new ZipInputStream(bis)) {
 
@@ -95,7 +82,6 @@ public class DataExtraction<T> {
         }
         return firstFile(temporaryExcelFolder);
     }
-
 
     private Path firstFile(Path folder) {
         return Path.of(Objects.requireNonNull(folder.toFile().listFiles())[0].getAbsolutePath());
