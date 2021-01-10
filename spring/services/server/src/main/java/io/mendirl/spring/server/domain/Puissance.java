@@ -1,7 +1,6 @@
 package io.mendirl.spring.server.domain;
 
 import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvIgnore;
 
 public class Puissance {
 
@@ -119,7 +118,48 @@ public class Puissance {
     @CsvBindByName(column = "Consommation corrigée")
     private int consumptionFixed;
 
-    @CsvBindByName(column = "")
-    @CsvIgnore
-    private String empty;
+    @Override
+    public String toString() {
+        return "Puissance{" +
+            "perimeter='" + perimeter + '\'' +
+            ", origin='" + origin + '\'' +
+            ", date='" + date + '\'' +
+            ", hour='" + hour + '\'' +
+            ", consumption=" + consumption +
+            ", forcastprevious=" + forcastprevious +
+            ", forcast=" + forcast +
+            ", fioul=" + fioul +
+            ", charbon=" + charbon +
+            ", gaz=" + gaz +
+            ", nucleaire=" + nucleaire +
+            ", eolien=" + eolien +
+            ", solaire=" + solaire +
+            ", hydraulique=" + hydraulique +
+            ", pompage=" + pompage +
+            ", bioenergie=" + bioenergie +
+            ", echangephysique=" + echangephysique +
+            ", tauxco2=" + tauxco2 +
+            ", exchange1=" + exchange1 +
+            ", exchange2=" + exchange2 +
+            ", exchange3=" + exchange3 +
+            ", exchange4=" + exchange4 +
+            ", exchange5=" + exchange5 +
+            ", exchange6=" + exchange6 +
+            ", fioul1=" + fioul1 +
+            ", fioul2=" + fioul2 +
+            ", fioul3=" + fioul3 +
+            ", gaz1=" + gaz1 +
+            ", gaz2=" + gaz2 +
+            ", gaz3=" + gaz3 +
+            ", gaz4=" + gaz4 +
+            ", hydro1=" + hydro1 +
+            ", hydro2=" + hydro2 +
+            ", hydro3=" + hydro3 +
+            ", bioenergie1=" + bioenergie1 +
+            ", bioenergie2=" + bioenergie2 +
+            ", bioenergie3=" + bioenergie3 +
+            ", consumptionFixed=" + consumptionFixed +
+            '}';
+    }
+
 }

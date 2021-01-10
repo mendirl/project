@@ -60,6 +60,35 @@ public class DataExtraction<T> {
     private Reader reader(InputStream inputStream, Charset cs) {
         CharsetDecoder decoder = cs.newDecoder();
         Reader reader = new InputStreamReader(inputStream, decoder);
-        return new BufferedReader(reader);
+        return new Eco2MixBufferedReader(reader);
     }
+
+
+    /**
+     * Content of the file needs to be fixed before parsed.
+     */
+    static class Eco2MixBufferedReader extends BufferedReader {
+        public Eco2MixBufferedReader(Reader in) {
+            super(in);
+        }
+
+        @Override
+        public String readLine() throws IOException {
+            var oldLine = super.readLine();
+
+            // line can contain a last '\t' irrelevant
+            var lastChar = oldLine.charAt(oldLine.length() - 1);
+            if (lastChar == '\t') {
+                return oldLine.substring(0, oldLine.length() - 1);
+            }
+
+            // the last line is not data, but warning
+            if (oldLine.startsWith("RTE ne pourra")) {
+                return super.readLine();
+            }
+
+            return oldLine;
+        }
+    }
+
 }
