@@ -4,18 +4,20 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StreamUtils;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.zip.ZipEntry;
+import java.util.function.Function;
 import java.util.zip.ZipInputStream;
 
 @Service
@@ -25,7 +27,7 @@ public class DataExtraction<T> {
     public List<T> extract(DataBuffer dataBuffer, Class<T> clazz) {
         log.info("lets go to extract data");
         try {
-            return convertData(unzip(dataBuffer), clazz);
+            return unzip(dataBuffer, reader -> convertData(reader, clazz));
         } catch (IOException e) {
             log.error("impossible to extract data", e);
         }
@@ -33,66 +35,31 @@ public class DataExtraction<T> {
         return Collections.emptyList();
     }
 
-//    private Path clean(Path path) throws IOException {
-//        var temporaryCsvFile = createTemporaryCsvFile();
-//
-//        try (var in = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1);
-//             var out = Files.newBufferedWriter(temporaryCsvFile)) {
-//
-//            var collect = in.lines().collect(Collectors.toList());
-//
-//            in.lines().map(String::trim).forEach(line -> {
-//                try {
-//                    out.write(line);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            });
-//        }
-//
-////        return temporaryCsvFile;
-//        return path;
-//    }
-
-    private Path createTemporaryDownloadedFile() throws IOException {
-        return Files.createTempFile("eco2mix-", ".zip");
-    }
-
-    private Path createTemporaryExcelFolder() throws IOException {
-        return Files.createTempDirectory("eco2mix-");
-    }
-
-    private Path unzip(DataBuffer dataBuffer) throws IOException {
-        var temporaryExcelFolder = createTemporaryExcelFolder();
+    private List<T> unzip(DataBuffer dataBuffer, Function<Reader, List<T>> function) throws IOException {
+        var result = new ArrayList<T>();
 
         try (var fis = dataBuffer.asInputStream();
              var bis = new BufferedInputStream(fis);
-             var stream = new ZipInputStream(bis)) {
+             var stream = new ZipInputStream(bis);
+             var reader = reader(stream, StandardCharsets.ISO_8859_1)) {
 
-            ZipEntry entry;
-            while ((entry = stream.getNextEntry()) != null) {
-
-                var filePath = temporaryExcelFolder.resolve(entry.getName());
-
-                try (var fos = Files.newOutputStream(filePath);
-                     var bos = new BufferedOutputStream(fos, StreamUtils.BUFFER_SIZE)) {
-                    StreamUtils.copy(stream, bos);
-                }
+            while (stream.getNextEntry() != null) {
+                result.addAll(function.apply(reader));
             }
         }
-        return firstFile(temporaryExcelFolder);
+        return result;
     }
 
-    private Path firstFile(Path folder) {
-        return Path.of(Objects.requireNonNull(folder.toFile().listFiles())[0].getAbsolutePath());
+    private List<T> convertData(Reader reader, Class<T> clazz) {
+        return new CsvToBeanBuilder<T>(reader)
+            .withType(clazz)
+            .withSeparator('\t')
+            .build().parse();
     }
 
-    private List<T> convertData(Path file, Class<T> clazz) throws IOException {
-        try (var reader = Files.newBufferedReader(file, StandardCharsets.ISO_8859_1)) {
-            return new CsvToBeanBuilder<T>(reader)
-                .withType(clazz)
-                .withSeparator('\t')
-                .build().parse();
-        }
+    private Reader reader(InputStream inputStream, Charset cs) {
+        CharsetDecoder decoder = cs.newDecoder();
+        Reader reader = new InputStreamReader(inputStream, decoder);
+        return new BufferedReader(reader);
     }
 }
