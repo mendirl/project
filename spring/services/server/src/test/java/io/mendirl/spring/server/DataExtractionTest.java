@@ -54,8 +54,9 @@ class DataExtractionTest {
 
         var results = extraction.extract(dataBuffer, Puissance.class);
 
-        assertThat(results).hasSize(1247);
+        assertThat(results).hasSize(96);
         assertThat(results.get(0)).hasFieldOrPropertyWithValue("perimeter", "France");
+        assertThat(results.get(0)).hasFieldOrPropertyWithValue("origin", "Données temps réel");
     }
 
 

@@ -1,49 +1,31 @@
 package io.mendirl.spring.server.properties;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
+@Data
+@RequiredArgsConstructor
 @ConstructorBinding
 @ConfigurationProperties(prefix = "eco2mix")
 public class Eco2MixProperties {
 
     private final String url;
+    private final Energie energie;
+    private final Puissance puissance;
 
-    private final String pathYear;
-    private final String pathMonth;
-    private final String pathDay;
+    @Data
+    @RequiredArgsConstructor
+    public static class Energie {
+        private final String pathYear;
+        private final String pathMonth;
 
-    public Eco2MixProperties(String url, String pathYear, String pathMonth, String pathDay) {
-        this.url = url;
-        this.pathYear = pathYear;
-        this.pathMonth = pathMonth;
-        this.pathDay = pathDay;
     }
 
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getPathYear() {
-        return pathYear;
-    }
-
-    public String getPathMonth() {
-        return pathMonth;
-    }
-
-    public String getPathDay() {
-        return pathDay;
-    }
-
-    @Override
-    public String toString() {
-        return "Eco2MixProperties{" +
-            "url='" + url + '\'' +
-            ", pathYear='" + pathYear + '\'' +
-            ", pathMonth='" + pathMonth + '\'' +
-            ", pathDay='" + pathDay + '\'' +
-            '}';
+    @Data
+    @RequiredArgsConstructor
+    public static class Puissance {
+        private final String pathday;
     }
 }
