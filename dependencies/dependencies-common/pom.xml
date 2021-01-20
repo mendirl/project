@@ -14,6 +14,7 @@
 
     <properties>
         <java.version>15</java.version>
+        <kotlin.version>1.4.21-2</kotlin.version>
         <resource.delimiter>@</resource.delimiter> <!-- delimiter that doesn't clash with Spring ${} placeholders -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -32,6 +33,15 @@
 
         <!-- for surefire and failsafe plugins combine with jacoco https://www.eclemma.org/jacoco/trunk/doc/prepare-agent-mojo.html -->
         <!-- <argLine>&#45;&#45;enable-preview</argLine> -->
+
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
+        <!-- <jaxb.version>2.3.2</jaxb.version>-->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.spark/spark-sql &ndash;&gt;-->
+        <!-- <spark.version>2.3.0</spark.version>-->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.parquet/parquet-avro &ndash;&gt;-->
+        <!-- <parquet.version>1.8.2</parquet.version>-->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common &ndash;&gt;-->
+        <!-- <hadoop-common.version>2.6.5</hadoop-common.version>-->
     </properties>
 
     <dependencyManagement>
@@ -79,6 +89,40 @@
                         <target>${java.version}</target>
                         <!-- <compilerArgs>&#45;&#45;enable-preview</compilerArgs> -->
                     </configuration>
+                </plugin>
+                <plugin>
+                    <!-- https://kotlinlang.org/docs/reference/using-maven.html -->
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <jvmTarget>${java.version}</jvmTarget>
+                        <javaParameters>true</javaParameters>
+                        <args>
+                            <arg>-Xjsr305=strict</arg>
+                        </args>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jetbrains.kotlin</groupId>
+                            <artifactId>kotlin-maven-allopen</artifactId>
+                            <version>${kotlin.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
