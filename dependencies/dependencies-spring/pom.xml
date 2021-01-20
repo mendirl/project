@@ -18,7 +18,7 @@
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
-        <spring-boot.version>2.4.1</spring-boot.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
         <kotlin.version>1.4.21-2</kotlin.version>
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
         <spring-cloud.version>2020.0.0</spring-cloud.version>
@@ -27,7 +27,7 @@
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-webflux-ui -->
-        <springdoc-openapi-webflux-ui.version>1.5.0</springdoc-openapi-webflux-ui.version>
+        <springdoc-openapi-webflux-ui.version>1.5.2</springdoc-openapi-webflux-ui.version>
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api &ndash;&gt;-->
         <!-- <jaxb.version>2.3.2</jaxb.version>-->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.spark/spark-sql &ndash;&gt;-->
@@ -226,7 +226,7 @@
                     <plugin>
                         <groupId>org.graalvm.nativeimage</groupId>
                         <artifactId>native-image-maven-plugin</artifactId>
-                        <version>20.2.0</version>
+                        <version>21.0.0</version>
                         <configuration>
                             <mainClass>
                                 wag.WagApplication
