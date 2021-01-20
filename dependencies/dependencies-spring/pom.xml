@@ -19,7 +19,7 @@
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
         <spring-boot.version>2.4.2</spring-boot.version>
-        <kotlin.version>1.4.21</kotlin.version>
+        <kotlin.version>1.4.21-2</kotlin.version>
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
         <spring-cloud.version>2020.0.0</spring-cloud.version>
         <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-dependencies -->
@@ -226,7 +226,7 @@
                     <plugin>
                         <groupId>org.graalvm.nativeimage</groupId>
                         <artifactId>native-image-maven-plugin</artifactId>
-                        <version>20.3.0</version>
+                        <version>21.0.0</version>
                         <configuration>
                             <mainClass>
                                 wag.WagApplication
