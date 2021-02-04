@@ -114,6 +114,7 @@
                         <javaParameters>true</javaParameters>
                         <args>
                             <arg>-Xjsr305=strict</arg>
+                            <arg>-Xuse-ir</arg>
                         </args>
                     </configuration>
                     <dependencies>
