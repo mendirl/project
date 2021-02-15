@@ -13,8 +13,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>reactor</module>
-        <module>sandbox</module>
     </modules>
 
 </project>

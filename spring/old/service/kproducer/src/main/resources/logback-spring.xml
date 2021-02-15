@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <jmxConfigurator/>
-    <logger name="org.mendirl.service" level="DEBUG"/>
-    <logger name="org.springframework.cloud" level="INFO"/>
-    <root level="INFO"/>
-</configuration>

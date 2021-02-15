@@ -1,5 +1,0 @@
-###
-GET http://localhost:8080/demo?name=MacroHard&amount=20
-
-###
-GET http://localhost:8080/demo?name=BlueHat&amount=10
