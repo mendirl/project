@@ -1,0 +1,11 @@
+spring.config.activate.on-profile: "local"
+
+jupiter:
+  security-oauth2-url: http://localhost:8080/auth/realms/JupiterR
+  applications:
+    gateway:
+      port: 7777
+      url: http://localhost:${jupiter.applications.gateway.port}
+    server:
+      port: 7070
+      url: http://localhost:${jupiter.applications.server.port}

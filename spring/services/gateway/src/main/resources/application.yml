@@ -1,14 +1,12 @@
-server.port: 7777
+server.port: ${jupiter.applications.gateway.port}
 
 spring:
   application.name: spring-gateway
+  profiles.active: local
   security.oauth2.client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/auth/realms/JupiterR
-            token-uri: http://localhost:8080/auth/realms/JupiterR/protocol/openid-connect/token
-            authorization-uri: http://localhost:8080/auth/realms/JupiterR/protocol/openid-connect/auth
-            userinfo-uri: http://localhost:8080/auth/realms/JupiterR/protocol/openid-connect/userinfo
+            issuer-uri: ${jupiter.security-oauth2-url}
             user-name-attribute: preferred_username
         registration:
           keycloak:
@@ -22,7 +20,7 @@ spring:
         - TokenRelay
       routes:
         - id: callme-service
-          uri: http://localhost:7070
+          uri: ${jupiter.applications.server.url}
           predicates:
             - Path=/callme/**
           filters:

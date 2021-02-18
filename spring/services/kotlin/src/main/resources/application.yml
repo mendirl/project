@@ -1,8 +1,9 @@
-server.port: 7070
+server.port: ${jupiter.applications.server.port}
 
 spring:
   application.name: spring-server
-  security.oauth2.resourceserver.jwt.issuer-uri: http://localhost:8080/auth/realms/JupiterR
+  profiles.active: local
+  security.oauth2.resourceserver.jwt.issuer-uri: ${jupiter.security-oauth2-url}
 
 logging.level:
   org.springframework.security: DEBUG

@@ -15,6 +15,6 @@ class ServerWebController {
     @GetMapping("/ping")
     fun ping(): Mono<String> =
         ReactiveSecurityContextHolder.getContext()
-            .map { "Scopes: ${it.authentication.authorities}" }
+            .map { "${it.authentication.name} has scopes: ${it.authentication.authorities}" }
 
 }
