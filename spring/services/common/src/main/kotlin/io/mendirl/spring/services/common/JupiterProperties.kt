@@ -6,11 +6,15 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConstructorBinding
 @ConfigurationProperties(prefix = "jupiter")
 data class JupiterProperties(
-    var securityOauth2Url: String,
-    var applications: Map<String, Application>
+    val security: Security,
+    val applications: Map<String, Application>
 )
 
 data class Application(
     val port: Int,
     val url: String
 )
+
+data class Security(val oauth2: Oauth2)
+
+data class Oauth2(val url: String, val userNameAttribute: String)
