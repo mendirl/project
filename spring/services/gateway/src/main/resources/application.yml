@@ -2,27 +2,33 @@ server.port: 7777
 
 spring:
   application.name: spring-gateway
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
-  security:
-    oauth2:
-      client:
+  security.oauth2.client:
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/auth/realms/JupiterRealm
+            issuer-uri: http://localhost:8080/auth/realms/JupiterR
+            token-uri: http://localhost:8080/auth/realms/JupiterR/protocol/openid-connect/token
+            authorization-uri: http://localhost:8080/auth/realms/JupiterR/protocol/openid-connect/auth
+            userinfo-uri: http://localhost:8080/auth/realms/JupiterR/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
         registration:
           keycloak:
             client-id: spring-gateway
-            client-secret: 21955231-b7e5-4d09-ba08-a0652accf642
+            client-secret: 7ce920b9-ea33-461c-bf28-c6791b75d854
+            authorization-grant-type: authorization_code
+            scope: openid
+#            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+  cloud.gateway:
+      default-filters:
+        - TokenRelay
+      routes:
+        - id: callme-service
+          uri: http://localhost:7070
+          predicates:
+            - Path=/callme/**
+          filters:
+            - RemoveRequestHeader=Cookie
 
 logging.level:
   org.springframework.cloud.gateway: DEBUG
+  org.springframework.security: DEBUG
   reactor.netty: DEBUG
-
-#management.endpoints.web.exposure.include=prometheus
-#management.endpoint.health.show-details=always
-#management.metrics.tags.application=spring-kotlin-server
-
