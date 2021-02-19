@@ -1,4 +1,8 @@
-spring.config.activate.on-profile: "local"
+spring:
+  config.activate.on-profile: local
+  profiles:
+    group:
+      "local": "consul"
 
 jupiter:
   security:

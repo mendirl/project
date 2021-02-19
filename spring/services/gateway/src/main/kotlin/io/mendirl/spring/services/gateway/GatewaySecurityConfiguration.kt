@@ -16,7 +16,14 @@ class GatewaySecurityConfiguration {
     @Bean
     fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
         http.csrf().disable()
-            .authorizeExchange { it.anyExchange().authenticated() }
+            .authorizeExchange {
+                it
+                    .pathMatchers("/actuator/health").permitAll()
+                    .pathMatchers("/actuator/health/**").permitAll()
+                    .pathMatchers("/actuator/info").permitAll()
+                    .pathMatchers("/actuator/prometheus").permitAll()
+                    .anyExchange().authenticated()
+            }
             .oauth2Login(Customizer.withDefaults())
         return http.build()
     }
