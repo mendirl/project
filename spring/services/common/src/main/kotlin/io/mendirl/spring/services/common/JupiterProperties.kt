@@ -8,13 +8,15 @@ import org.springframework.boot.context.properties.ConstructorBinding
 data class JupiterProperties(
     val security: Security,
     val applications: Map<String, Application>
-)
+) {
+    data class Application(
+        val port: Int,
+        val url: String
+    )
 
-data class Application(
-    val port: Int,
-    val url: String
-)
-
-data class Security(val oauth2: Oauth2)
-
-data class Oauth2(val url: String, val userNameAttribute: String)
+    data class Security(
+        val oauth2: Oauth2
+        ) {
+        data class Oauth2(val url: String, val userNameAttribute: String)
+    }
+}
