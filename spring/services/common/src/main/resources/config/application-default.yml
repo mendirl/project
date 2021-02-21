@@ -1,0 +1,13 @@
+debug: false
+
+spring:
+  config.activate.on-profile: local
+  main.banner-mode: off
+  cloud.consul.enabled: false
+  boot.admin.discovery.enabled: false
+
+logging.level:
+  root: INFO
+#  org.springframework.cloud.gateway: DEBUG
+#  org.springframework.security: DEBUG
+#  reactor.netty: DEBUG

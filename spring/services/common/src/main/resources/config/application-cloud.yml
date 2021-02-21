@@ -1,8 +1,12 @@
 spring:
-  config.activate.on-profile: consul
+  config.activate.on-profile: cloud
   cloud:
     consul:
+      enabled: true
       discovery:
-        enabled: true
         instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${random.value}
         service-name: ${spring.application.name}
+  boot:
+    admin:
+      discovery:
+        enabled: true

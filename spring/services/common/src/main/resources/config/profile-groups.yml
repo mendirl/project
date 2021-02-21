@@ -1,0 +1,9 @@
+spring.profiles.group:
+  local:
+    - default
+    - cloud
+    - app-local
+  dev:
+    - default
+    - cloud
+    - app-dev

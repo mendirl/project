@@ -1,0 +1,6 @@
+server.port: ${jupiter.applications.producer.port}
+
+spring:
+  config.import: classpath:config/profile-groups.yml
+  application.name: ${jupiter.applications.producer.name}
+  profiles.active: local

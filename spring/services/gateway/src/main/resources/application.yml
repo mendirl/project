@@ -1,8 +1,9 @@
 server.port: ${jupiter.applications.gateway.port}
 
 spring:
-  application.name: spring-gateway
-  profiles.active: local, consul
+  config.import: classpath:config/profile-groups.yml
+  application.name: ${jupiter.applications.gateway.name}
+  profiles.active: local
   security.oauth2.client:
     provider:
       keycloak:
@@ -10,11 +11,11 @@ spring:
         user-name-attribute: ${jupiter.security.oauth2.user-name-attribute}
     registration:
       keycloak:
-        client-id: spring-gateway
+        client-id: ${jupiter.applications.gateway.name}
         client-secret: 7ce920b9-ea33-461c-bf28-c6791b75d854
         authorization-grant-type: authorization_code
         scope: openid
-  #            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+        redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
   cloud:
     gateway:
       discovery.locator.enabled: true
@@ -22,13 +23,9 @@ spring:
         - TokenRelay
       routes:
         - id: callme-service
-          uri: lb://spring-server
+#          uri: lb://spring-server
+          uri: ${jupiter.applications.server.url}
           predicates:
             - Path=/callme/**
           filters:
             - RemoveRequestHeader=Cookie
-
-logging.level:
-  org.springframework.cloud.gateway: DEBUG
-  org.springframework.security: DEBUG
-  reactor.netty: DEBUG

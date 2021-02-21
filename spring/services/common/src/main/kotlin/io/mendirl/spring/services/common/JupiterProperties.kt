@@ -10,6 +10,7 @@ data class JupiterProperties(
     val applications: Map<String, Application>
 ) {
     data class Application(
+        val name: String,
         val port: Int,
         val url: String
     )

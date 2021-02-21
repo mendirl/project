@@ -1,2 +1,6 @@
-server:
-  port: 8081
+server.port: ${jupiter.applications.client.port}
+
+spring:
+  config.import: classpath:config/profile-groups.yml
+  application.name: ${jupiter.applications.client.name}
+  profiles.active: local

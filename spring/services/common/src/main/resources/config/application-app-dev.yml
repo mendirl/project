@@ -1,0 +1,15 @@
+spring.config.activate.on-profile: app-dev
+
+jupiter:
+  security:
+    oauth2:
+      url: http://devhost:8080/auth/realms/jupiterR
+      user-name-attribute: preferred_username
+  applications:
+    gateway:
+      port: 7777
+      url: http://devhost:${jupiter.applications.gateway.port}
+    server:
+      port: 7070
+      url: http://devhost:${jupiter.applications.server.port}
+

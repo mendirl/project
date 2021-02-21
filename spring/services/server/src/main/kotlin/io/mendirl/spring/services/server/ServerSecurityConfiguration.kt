@@ -1,6 +1,7 @@
 package io.mendirl.spring.services.server
 
 
+import de.codecentric.boot.admin.server.config.AdminServerProperties
 import io.mendirl.spring.services.common.JupiterProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -20,7 +21,8 @@ import reactor.core.publisher.Mono
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 class ServerSecurityConfiguration(
-    val jupiterProperties: JupiterProperties
+    val jupiterProperties: JupiterProperties,
+    val adminServer: AdminServerProperties
 ) {
 
     @Bean
@@ -28,6 +30,8 @@ class ServerSecurityConfiguration(
         http.csrf().disable()
             .authorizeExchange {
                 it
+                    .pathMatchers(adminServer.contextPath).permitAll()
+                    .pathMatchers("${adminServer.contextPath}/**").permitAll()
                     .pathMatchers("/actuator/health").permitAll()
                     .pathMatchers("/actuator/health/**").permitAll()
                     .pathMatchers("/actuator/info").permitAll()

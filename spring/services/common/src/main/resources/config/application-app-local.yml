@@ -1,0 +1,29 @@
+spring.config.activate.on-profile: app-local
+
+jupiter:
+  security:
+    oauth2:
+      url: http://localhost:8080/auth/realms/jupiterR
+      user-name-attribute: preferred_username
+  applications:
+    gateway:
+      name: spring-gateway
+      port: 7777
+      url: http://localhost:${jupiter.applications.gateway.port}
+    server:
+      name: spring-server
+      port: 7070
+      url: http://localhost:${jupiter.applications.server.port}
+    client:
+      name: spring-client
+      port: 7071
+      url: http://localhost:${jupiter.applications.client.port}
+    producer:
+      name: spring-producer
+      port: 7072
+      url: http://localhost:${jupiter.applications.producer.port}
+    consumer:
+      name: spring-consumer
+      port: 7073
+      url: http://localhost:${jupiter.applications.consumer.port}
+
