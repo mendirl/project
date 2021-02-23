@@ -5,6 +5,7 @@ import de.codecentric.boot.admin.server.config.AdminServerProperties
 import io.mendirl.spring.services.common.JupiterProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.annotation.Order
 import org.springframework.core.convert.converter.Converter
 import org.springframework.security.authentication.AbstractAuthenticationToken
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
@@ -26,19 +27,46 @@ class ServerSecurityConfiguration(
 ) {
 
     @Bean
-    fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
+    @Order(1)
+    fun commonFilter(http: ServerHttpSecurity): SecurityWebFilterChain {
         http.csrf().disable()
+        return http.build()
+    }
+
+    @Bean
+    @Order(100)
+    fun actuatorFilter(http: ServerHttpSecurity): SecurityWebFilterChain {
+        http
+            .authorizeExchange {
+                it
+                    .pathMatchers("/actuator").permitAll()
+                    .pathMatchers("/actuator/**").permitAll()
+            }
+        return http.build()
+    }
+
+    @Bean
+    @Order(200)
+    fun sbaFilter(http: ServerHttpSecurity): SecurityWebFilterChain {
+        http
             .authorizeExchange {
                 it
                     .pathMatchers(adminServer.contextPath).permitAll()
                     .pathMatchers("${adminServer.contextPath}/**").permitAll()
-                    .pathMatchers("/actuator/health").permitAll()
-                    .pathMatchers("/actuator/health/**").permitAll()
-                    .pathMatchers("/actuator/info").permitAll()
-                    .pathMatchers("/actuator/prometheus").permitAll()
-                    .anyExchange().authenticated()
             }
-            .oauth2ResourceServer { it.jwt().jwtAuthenticationConverter(jwtConverter()) }
+        return http.build()
+    }
+
+    @Bean
+    @Order(1000)
+    fun oauth2Filter(http: ServerHttpSecurity): SecurityWebFilterChain {
+        http
+            .authorizeExchange {
+                it.anyExchange().authenticated()
+            }
+            .oauth2ResourceServer {
+                it.jwt().jwtAuthenticationConverter(jwtConverter())
+            }
         return http.build()
     }
 

@@ -1,10 +1,14 @@
-debug: false
+debug: true
 
 spring:
   config.activate.on-profile: local
   main.banner-mode: off
   cloud.consul.enabled: false
   boot.admin.discovery.enabled: false
+
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: ALWAYS
 
 logging.level:
   root: INFO
