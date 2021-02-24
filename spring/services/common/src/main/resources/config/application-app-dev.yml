@@ -3,13 +3,27 @@ spring.config.activate.on-profile: app-dev
 jupiter:
   security:
     oauth2:
-      url: http://devhost:8080/auth/realms/jupiterR
+      url: http://devhost:8080/auth/realms/JupiterR
       user-name-attribute: preferred_username
   applications:
     gateway:
+      name: dev-spring-gateway
       port: 7777
       url: http://devhost:${jupiter.applications.gateway.port}
     server:
+      name: dev-spring-server
       port: 7070
       url: http://devhost:${jupiter.applications.server.port}
+    client:
+      name: dev-spring-client
+      port: 7071
+      url: http://devhost:${jupiter.applications.client.port}
+    producer:
+      name: dev-spring-producer
+      port: 7072
+      url: http://devhost:${jupiter.applications.producer.port}
+    consumer:
+      name: dev-spring-consumer
+      port: 7073
+      url: http://devhost:${jupiter.applications.consumer.port}
 

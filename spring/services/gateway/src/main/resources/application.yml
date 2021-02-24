@@ -23,9 +23,9 @@ spring:
         - TokenRelay
       routes:
         - id: callme-service
-#          uri: lb://spring-server
           uri: ${jupiter.applications.server.url}
           predicates:
-            - Path=/callme/**
+            - Path=/api/**
           filters:
             - RemoveRequestHeader=Cookie
+            - RewritePath=/api(?<segment>/?.*), $\{segment}

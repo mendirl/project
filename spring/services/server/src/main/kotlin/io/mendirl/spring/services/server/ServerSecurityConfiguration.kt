@@ -3,9 +3,10 @@ package io.mendirl.spring.services.server
 
 import de.codecentric.boot.admin.server.config.AdminServerProperties
 import io.mendirl.spring.services.common.JupiterProperties
+import org.springframework.boot.actuate.autoconfigure.security.reactive.EndpointRequest
+import org.springframework.boot.autoconfigure.security.reactive.PathRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.annotation.Order
 import org.springframework.core.convert.converter.Converter
 import org.springframework.security.authentication.AbstractAuthenticationToken
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
@@ -27,52 +28,27 @@ class ServerSecurityConfiguration(
 ) {
 
     @Bean
-    @Order(1)
-    fun commonFilter(http: ServerHttpSecurity): SecurityWebFilterChain {
-        http.csrf().disable()
-        return http.build()
-    }
-
-    @Bean
-    @Order(100)
-    fun actuatorFilter(http: ServerHttpSecurity): SecurityWebFilterChain {
+    fun securityWebFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain =
         http
             .authorizeExchange {
                 it
-                    .pathMatchers("/actuator").permitAll()
-                    .pathMatchers("/actuator/**").permitAll()
-            }
-        return http.build()
-    }
-
-    @Bean
-    @Order(200)
-    fun sbaFilter(http: ServerHttpSecurity): SecurityWebFilterChain {
-        http
-            .authorizeExchange {
-                it
+                    // web resources
+                    .matchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                    // actuator
+                    .matchers(EndpointRequest.toAnyEndpoint()).permitAll()
+                    // sba
                     .pathMatchers(adminServer.contextPath).permitAll()
                     .pathMatchers("${adminServer.contextPath}/**").permitAll()
+                    // anything else
+                    .anyExchange().authenticated()
             }
-        return http.build()
-    }
-
-    @Bean
-    @Order(1000)
-    fun oauth2Filter(http: ServerHttpSecurity): SecurityWebFilterChain {
-        http
-            .authorizeExchange {
-                it.anyExchange().authenticated()
-            }
-            .oauth2ResourceServer {
-                it.jwt().jwtAuthenticationConverter(jwtConverter())
-            }
-        return http.build()
-    }
+            .oauth2ResourceServer { it.jwt().jwtAuthenticationConverter(jwtConverter()) }
+            .build()
 
     fun jwtConverter(): Converter<Jwt, Mono<AbstractAuthenticationToken>> {
         val jwtAuthenticationConverter = JwtAuthenticationConverter()
         jwtAuthenticationConverter.setPrincipalClaimName(jupiterProperties.security.oauth2.userNameAttribute)
         return ReactiveJwtAuthenticationConverterAdapter(jwtAuthenticationConverter)
     }
+
 }
