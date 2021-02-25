@@ -10,7 +10,8 @@ spring:
         issuer-uri: ${jupiter.security.oauth2.url}
         user-name-attribute: ${jupiter.security.oauth2.user-name-attribute}
     registration:
-      keycloak:
+      gateway:
+        provider: keycloak
         client-id: ${jupiter.applications.gateway.name}
         client-secret: 7ce920b9-ea33-461c-bf28-c6791b75d854
         authorization-grant-type: authorization_code

@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono
 @EnableReactiveMethodSecurity
 class ServerSecurityConfiguration(
     val jupiterProperties: JupiterProperties,
-    val adminServer: AdminServerProperties
+    val adminServerProperties: AdminServerProperties
 ) {
 
     @Bean
@@ -37,8 +37,8 @@ class ServerSecurityConfiguration(
                     // actuator
                     .matchers(EndpointRequest.toAnyEndpoint()).permitAll()
                     // sba
-                    .pathMatchers(adminServer.contextPath).permitAll()
-                    .pathMatchers("${adminServer.contextPath}/**").permitAll()
+                    .pathMatchers(adminServerProperties.contextPath).permitAll()
+                    .pathMatchers("${adminServerProperties.contextPath}/**").permitAll()
                     // anything else
                     .anyExchange().authenticated()
             }
