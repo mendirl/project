@@ -1,0 +1,15 @@
+spring:
+  config.activate.on-profile: app-cloud
+
+jupiter:
+  applications:
+    gateway:
+      url: lb://${jupiter.applications.gateway.name}
+    server:
+      url: lb://${jupiter.applications.server.name}
+    client:
+      url: lb://${jupiter.applications.client.name}
+    producer:
+      url: lb://${jupiter.applications.producer.name}
+    consumer:
+      url: lb://${jupiter.applications.consumer.name}

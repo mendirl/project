@@ -4,3 +4,14 @@ spring:
   config.import: classpath:config/profile-groups.yml
   application.name: ${jupiter.applications.consumer.name}
   profiles.active: local
+  security.oauth2.client:
+    provider:
+      keycloak:
+        issuer-uri: ${jupiter.security.oauth2.url}
+    registration:
+      consumer-client:
+        provider: keycloak
+        client-id: ${jupiter.applications.consumer.name}
+        client-secret: 7ce920b9-ea33-461c-bf28-c6791b75d854
+        authorization-grant-type: client_credentials
+        scope: position

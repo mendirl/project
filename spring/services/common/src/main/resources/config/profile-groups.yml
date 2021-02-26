@@ -3,7 +3,9 @@ spring.profiles.group:
     - default
     - cloud
     - app-local
+    - app-cloud
   dev:
     - default
     - cloud
     - app-dev
+    - app-cloud
