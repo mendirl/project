@@ -17,6 +17,15 @@
             <groupId>io.mendirl</groupId>
             <artifactId>spring-common</artifactId>
         </dependency>
+        <!-- PROJECT DEPENDENCIES -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-tools</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -32,15 +41,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-config</artifactId>
-        </dependency>
-        <!-- PROJECT DEPENDENCIES -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-tools</artifactId>
         </dependency>
         <!-- KOTLIN DEPENDENCIES -->
         <dependency>
