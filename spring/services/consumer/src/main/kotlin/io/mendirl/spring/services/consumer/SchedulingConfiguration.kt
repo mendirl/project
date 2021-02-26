@@ -14,11 +14,18 @@ class SchedulingConfiguration(
     private val logger = LoggerFactory.getLogger(SchedulingConfiguration::class.java)
 
     @Scheduled(initialDelay = 1000, fixedRate = 1000)
-    fun scheduled() {
+    fun scheduledWeb() {
         client.position()
             .subscribe {
                 logger.info("position retrieved: $it")
             }
+    }
 
+    @Scheduled(initialDelay = 1000, fixedRate = 1000)
+    fun scheduledRSocket() {
+        client.message()
+            .subscribe {
+                logger.info("message retrieved: $it")
+            }
     }
 }
