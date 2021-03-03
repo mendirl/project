@@ -14,4 +14,7 @@ logging.level:
   root: INFO
 #  org.springframework.cloud.gateway: DEBUG
 #  org.springframework.security: DEBUG
+#  org.springframework.messaging: DEBUG
+#  io.rsocket: DEBUG
+
 #  reactor.netty: DEBUG
