@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import java.time.Instant
 
 @Component
-class ServerClient(
+class ProducerClient(
     val webClient: WebClient,
     val rsocketClient: RSocketRequester
 ) {

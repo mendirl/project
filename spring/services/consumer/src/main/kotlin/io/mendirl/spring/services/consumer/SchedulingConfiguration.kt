@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled
 @EnableScheduling
 @Configuration
 class SchedulingConfiguration(
-    val client: ServerClient
+    val client: ProducerClient
 ) {
 
     private val logger = LoggerFactory.getLogger(SchedulingConfiguration::class.java)
