@@ -6,8 +6,8 @@ import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.time.Instant;
 import java.util.Random;
 
@@ -17,14 +17,15 @@ public class WebController {
     @Inject
     Logger logger;
 
+
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"position"})
-    public Position hello(@Context SecurityContext ctx) {
+    public Position position() {
         var position = new Position("position " + new Random().nextInt() % 1000, Instant.now());
         logger.infof("position generated: %s", position);
         return position;
     }
-
 
 }
 
