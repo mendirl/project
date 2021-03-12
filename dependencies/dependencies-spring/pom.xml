@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -19,6 +20,7 @@
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
         <spring-boot.version>2.4.3</spring-boot.version>
+        <spring-native.version>0.9.0</spring-native.version>
     </properties>
 
     <dependencyManagement>
@@ -157,6 +159,9 @@
 
     <profiles>
         <profile>
+            <id>dev</id>
+        </profile>
+        <profile>
             <id>docker</id>
             <properties>
                 <spring-boot.build-image.skip>false</spring-boot.build-image.skip>
@@ -164,53 +169,6 @@
                     ${docker.registry.url}/${docker.owner}/${docker.repository}/${docker.image.name}:${docker.image.version}
                 </spring-boot.build-image.imageName>
             </properties>
-        </profile>
-        <profile>
-            <id>native</id>
-            <!-- TODO: to test -->
-
-            <!-- need this dep and one of the following plugins block -->
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.experimental</groupId>-->
-            <!--                <artifactId>spring-graalvm-native</artifactId>-->
-            <!--                <version>0.8.2-SNAPSHOT</version>-->
-            <!--            </dependency>-->
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <image>
-                                <builder>paketobuildpacks/builder:tiny</builder>
-                                <env>
-                                    <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
-                                </env>
-                            </image>
-                        </configuration>
-                    </plugin>
-                    <!-- or this -->
-                    <plugin>
-                        <groupId>org.graalvm.nativeimage</groupId>
-                        <artifactId>native-image-maven-plugin</artifactId>
-                        <version>21.0.0.2</version>
-                        <configuration>
-                            <mainClass>
-                                wag.WagApplication
-                            </mainClass>
-                            <imageName>${project.artifactId}</imageName>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>native-image</goal>
-                                </goals>
-                                <phase>package</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
         <profile>
             <id>dockerPush</id>
@@ -236,6 +194,59 @@
                                     </publishRegistry>
                                 </docker>
                             </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>native</id>
+            <properties>
+                <java.version>11</java.version>
+                <spring-boot.build-image.imageName>
+                    ${docker.registry.url}/${docker.owner}/${docker.repository}/${docker.image.name}:${docker.image.version}-native
+                </spring-boot.build-image.imageName>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.experimental</groupId>
+                    <artifactId>spring-native</artifactId>
+                    <version>${spring-native.version}</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-maven-plugin</artifactId>
+                            <configuration>
+                                <image>
+                                    <builder>paketobuildpacks/builder:tiny</builder>
+                                    <env>
+                                        <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
+                                    </env>
+                                </image>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.springframework.experimental</groupId>
+                            <artifactId>spring-aot-maven-plugin</artifactId>
+                            <version>${spring-native.version}</version>
+                            <executions>
+                                <execution>
+                                    <id>test-generate</id>
+                                    <goals>
+                                        <goal>test-generate</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>generate</id>
+                                    <goals>
+                                        <goal>generate</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
                         </plugin>
                     </plugins>
                 </pluginManagement>
