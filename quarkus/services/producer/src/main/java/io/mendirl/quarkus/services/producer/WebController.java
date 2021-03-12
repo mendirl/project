@@ -8,8 +8,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.time.Instant;
-import java.util.Random;
 
 @Path("/api/position")
 public class WebController {
@@ -21,8 +22,8 @@ public class WebController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"position"})
-    public Position position() {
-        var position = new Position("position " + new Random().nextInt() % 1000, Instant.now());
+    public Position position() throws NoSuchAlgorithmException {
+        var position = new Position("position " + SecureRandom.getInstanceStrong().nextInt() % 1000, Instant.now());
         logger.infof("position generated: %s", position);
         return position;
     }
