@@ -136,6 +136,8 @@
             <properties>
                 <java.version>11</java.version>
                 <quarkus.package.type>native</quarkus.package.type>
+                <quarkus.native.container-build>true</quarkus.native.container-build>
+                <quarkus.container-image.tag>${docker.image.version}-native</quarkus.container-image.tag>
             </properties>
             <build>
                 <plugins>
