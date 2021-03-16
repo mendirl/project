@@ -65,7 +65,7 @@
                 <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-webflux-ui -->
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-webflux-ui</artifactId>
-                <version>1.5.5</version>
+                <version>1.5.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
